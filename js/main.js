@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	let getPFromTableP
 	function findP() {
 		f = quantityX + quantityY - 2
-		console.log(`Число степеней свободы + ${f}`)
+		console.log(`Число степеней свободы = ${f}`)
 		if (f <= 30) {
 			getPFromTableP = tableP[f]
 		} else if (f > 30 && f <= 40) {
