@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- Установление ширины контента равной ширине экрана устройства, начального уровня масштабирования страницы,что гарантирует, что страница не будет автоматически масштабироваться при открытии на мобильных устройствах. -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<!-- <link rel="icon" href=""> -->
+		<title>t-Критерий Стьюдента</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="container">
+				<h1>Определение достоверности различий по t-Критерию Стьюдента</h1>
+				<div class="form-inner">
+					<form>
+						<div class="inputs-grid">
+							<div class="form-inner__left">
+								<label class="x">x</label>
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+								<input class="input-left" type="text" />
+							</div>
+							<div class="form-inner__right">
+								<label class="y">y</label>
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+								<input class="input-right" type="text" />
+							</div>
+						</div>
+						<div class="button-wrapper">
+							<button type="submit">вычислить</button>
+							<button type="reset">очистить</button>
+						</div>
+					</form>
+					<button data-btn>добавить</button>
+					<div class="form-inner__row-result">
+						<div class="arithmetic-mean">
+							<h2>среднее арифметическое</h2>
+							<div class="flex-result">
+								<div class="result" data-averageX></div>
+								<div class="result" data-averageY></div>
+							</div>
+						</div>
+						<div class="sigma">
+							<h2>среднее квадратическое отклонение</h2>
+							<div class="flex-result">
+								<div class="result" data-sigmaX></div>
+								<div class="result" data-sigmaY></div>
+							</div>
+						</div>
+						<div class="standard-deviation">
+							<h2>стандартное отклонение</h2>
+							<div class="flex-result">
+								<div class="result" data-standardDeviationX></div>
+								<div class="result" data-standardDeviationY></div>
+							</div>
+						</div>
+						<div class="arithmetic-mean-error">
+							<h2>стандартная ошибка среднего арифметического значения (m)</h2>
+							<div class="flex-result">
+								<div class="result" data-errorX></div>
+								<div class="result" data-errorY></div>
+							</div>
+						</div>
+						<div class="average-error">
+							<h2>стандартная ошибка разности (t)</h2>
+							<div class="result last-result" data-finishResult></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/main.js"></script>
+	</body>
+</html>
+</body>
+</html>

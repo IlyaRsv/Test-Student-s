@@ -1,0 +1,57 @@
+:root {
+	--base-font-size: 14;
+}
+body {
+	font-size: var(--base-font-size);
+}
+//=============================================================
+//ФУНКЦИИ КОНВЕРТИРОВАНИЯ ШРИФТА
+//=============================================================
+@function pxRem($pxValue) {
+	@return calc($pxValue / var(--base-font-size) * 1rem);
+}
+@function pxEm($pxValue) {
+	@return calc($pxValue / var(--base-font-size) * 1em);
+}
+
+//=============================================================
+//ФУНКЦИЯ ПОЛУЧЕНИЯ ЖЕЛАЕМОЙ ВЫСОТЫ
+//=============================================================
+@function desiredHeight($actualWidth, $actualHeight, $desiredWidth) {
+	$aspectRatio: $actualHeight / $actualWidth;
+	$desiredHeight: $desiredWidth * $aspectRatio;
+	@return $desiredHeight;
+}
+
+//=============================================================
+//ФУНКЦИЯ ПОЛУЧЕНИЯ ЖЕЛАЕМОЙ ШИРИНЫ
+//=============================================================
+@function desiredWidth($actualWidth, $actualHeight, $desiredHeight) {
+	$aspectRatio: $actualWidth / $actualHeight;
+	$desiredWidth: $desiredHeight * $aspectRatio;
+	@return $desiredWidth;
+}
+
+//=============================================================
+// ФУНКЦИЯ С УРАВНЕНИЕМ, ОСНОВАННОЕ НА ПРОПОРЦИОНАЛЬНОМ ИЗМЕНЕНИИ РАЗМЕРА ОТНОСИТЕЛЬНО ШИРИНЫ ЭКРАНА
+//=============================================================
+@function clampSize($min-screenWidth, $max-screenWidth, $min-size, $max-size) {
+	$coefficient: ($max-size - $min-size) / ($max-screenWidth - $min-screenWidth);
+	$averageWidth: calc($min-size + $coefficient * (100vw - $min-screenWidth));
+	@return clamp($min-size, $averageWidth, $max-size);
+}
+
+//=============================================================
+// ФУНКЦИЯ С УРАВНЕНИЕМ, ОСНОВАННОЕ НА ПРОПОРЦИОНАЛЬНОМ ИЗМЕНЕНИИ
+// РАЗМЕРА ОТНОСИТЕЛЬНО ШИРИНЫ ЭКРАНА С ПЕРЕВОДОМ В REM
+//=============================================================
+@function clampFontSize($viewportMin, $viewportMax, $sizeMin, $sizeMax) {
+	$Change: ($sizeMax - $sizeMin) / ($viewportMax - $viewportMin);
+	$A: $sizeMax - $viewportMax * $Change;
+	$B: calc(100vw * $Change);
+	$sizeMinRem: calc($sizeMin / var(--base-font-size) * 1rem);
+	$ARem: calc($A / var(--base-font-size) * 1rem);
+	$sizeMaxRem: calc($sizeMax / var(--base-font-size) * 1rem);
+	$result: clamp($sizeMinRem, $ARem + $B, $sizeMaxRem);
+	@return $result;
+}
