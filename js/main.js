@@ -297,8 +297,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Стандартная ошибка разности (t)
 	let finishedResult
 	function averageError() {
-		finishedResult =
-			(arithmeticMeanX - arithmeticMeanY) / Math.sqrt(mX ** 2 + mY ** 2)
+		ResultFirst =
+			(arithmeticMeanX - arithmeticMeanY) / Math.sqrt(mX ** 2 + mY ** 2);
+		finishedResult = Math.abs(ResultFirst);	
 		console.log(`Стандартная ошибка разности (t) ${finishedResult}`)
 		const dataFinishResult = document.querySelector('[data-finishResult]')
 		dataFinishResult.textContent = finishedResult.toFixed(2)
