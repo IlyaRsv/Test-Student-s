@@ -331,10 +331,17 @@ document.addEventListener('DOMContentLoaded', function () {
 		)
 		const container = document.querySelector('.container')
 		const paragraph = document.createElement('p')
-		paragraph.textContent = `Граничное значение при 5%-ном уровне значимости (p = 0,05) = ${getPFromTableP}`
+		if (finishedResult > getPFromTableP) {
+			paragraph.textContent = `Граничное значение при 5%-ном уровне значимости (p = 0,05) = ${getPFromTableP} (различия достоверны!)`
 		paragraph.style.cssText =
 			'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px red'
 		container.append(paragraph)
+		} else if (finishedResult < getPFromTableP) {
+			paragraph.textContent = `Граничное значение при 5%-ном уровне значимости (p = 0,05) = ${getPFromTableP} (различия не достоверны!)`
+			paragraph.style.cssText =
+				'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px red'
+			container.append(paragraph)
+		}
 	}
 
 	//==============================================================
