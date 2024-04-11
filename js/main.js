@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const inputsText = document.querySelectorAll('input')
 	for (let input of inputsText) {
 		input.setAttribute('inputmode', 'numeric')
-		input.setAttribute('pattern', '[0-9]*')
+		// input.setAttribute('pattern', '[0-9]*')
 	}
 
 	// Таблица значений коэффициента К стандартного отклонения
