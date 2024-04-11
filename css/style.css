@@ -128,7 +128,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, 110px);
   gap: 10px;
-  margin: 0px 0px 70px 0px;
+  margin: 0px 0px 20px 0px;
 }
 .form-inner form .inputs-grid input + input {
   margin: 10px 0px 0px 0px;
@@ -137,7 +137,6 @@ h1 {
   .form-inner form .inputs-grid {
     gap: 0;
     justify-content: space-between;
-    margin: 0px 0px 70px 0px;
   }
 }
 .form-inner form label {
@@ -160,6 +159,9 @@ h1 {
 .form-inner form .button-wrapper {
   position: relative;
 }
+.form-inner form .button-wrapper button + button {
+  margin: 10px 0px 0px 0px;
+}
 @media (max-width: 640px) {
   .form-inner form .button-wrapper {
     margin: 0px 0px 20px 0px;
@@ -167,7 +169,7 @@ h1 {
 }
 .form-inner h2 {
   text-align: center;
-  font-size: calc(18 / var(--base-font-size) * 1rem);
+  font-size: calc(20.5 / var(--base-font-size) * 1rem);
   letter-spacing: calc(2 / var(--base-font-size) * 1rem);
   line-height: 1.5rem;
   font-weight: 700;
@@ -248,19 +250,9 @@ h1 {
   }
 }
 .form-inner button[data-btn] {
-  position: absolute;
-  bottom: 60px;
-  left: 0;
-  width: 230px;
+  width: 100%;
 }
-@media (max-width: 640px) {
-  .form-inner button[data-btn] {
-    bottom: 790px;
-    width: 250px;
-  }
-}
-
-.result {
+.form-inner .result {
   min-width: 110px;
   display: flex;
   justify-content: center;
@@ -274,13 +266,12 @@ h1 {
   font-weight: 700;
   background-color: #fff;
 }
-
-.last-result {
+.form-inner .last-result {
   max-width: 110px;
   margin: 0 0 0 auto;
 }
 @media (max-width: 640px) {
-  .last-result {
+  .form-inner .last-result {
     margin: 0 auto;
   }
 }/*# sourceMappingURL=style.css.map */
