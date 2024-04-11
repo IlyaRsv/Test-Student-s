@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
 	const form = document.querySelector('form')
 	const inputLeft = document.querySelectorAll('.input-left')
 	const inputRight = document.querySelectorAll('.input-right')
@@ -362,4 +361,3 @@ document.addEventListener('DOMContentLoaded', function () {
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
 	}
 	//==============================================================
-})
