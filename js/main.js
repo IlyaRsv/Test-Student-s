@@ -103,7 +103,7 @@
 		if (count > 0) {
 			// Вычисляем среднее значение
 			arithmeticMeanX = sum / count / 100
-			console.log(`Средняя арифметическая X = ${arithmeticMeanX}`)
+			console.log(`Средняя арифметическая X = %c${arithmeticMeanX}`, 'color: blue')
 			resultX.textContent = arithmeticMeanX.toFixed(1) // Округляем до ближайшего десятого и до первого числа после запятой
 		}
 	}
@@ -123,7 +123,7 @@
 		}
 		if (count > 0) {
 			arithmeticMeanY = sum / count / 100
-			console.log(`Средняя арифметическая Y = ${arithmeticMeanY}`)
+			console.log(`Средняя арифметическая Y = %c${arithmeticMeanY}`, 'color: blue')
 			console.log('====================================')
 			resultY.textContent = arithmeticMeanY.toFixed(1) // Округляем до ближайшего десятого и до первого числа после запятой
 		}
@@ -150,7 +150,7 @@
 				resultSigmaX.textContent = `${arithmeticMeanX.toFixed(1)} ± ${sigma}`
 			}
 		}
-		console.log(`Среднее квадратическое отклонение X = ${firstSigmaX}`)
+		console.log(`Среднее квадратическое отклонение X = %c${firstSigmaX}`, 'color: blue')
 	}
 	function sigmaY() {
 		let sum = 0 // Переменная для суммы
@@ -171,7 +171,7 @@
 				resultSigmaY.textContent = `${arithmeticMeanY.toFixed(1)} ± ${sigma}`
 			}
 		}
-		console.log(`Среднее квадратическое отклонение Y = ${firstSigmaY}`)
+		console.log(`Среднее квадратическое отклонение Y = %c${firstSigmaY}`, 'color: blue')
 		console.log('====================================')
 	}
 	//==============================================================
@@ -212,7 +212,10 @@
 			let max = Math.max(...numbers) // Находим максимальное значение
 			let min = Math.min(...numbers) // Находим минимальное значение
 			resultStandardDeviationX = (max - min) / getValueFromTableX
-			console.log(`Стандартное отклонение X = ${resultStandardDeviationX}`)
+			console.log(
+				`Стандартное отклонение X = %c${resultStandardDeviationX}`,
+				'color: blue'
+			)
 			const standardDeviationX = document.querySelector(
 				'[data-standardDeviationX]'
 			)
@@ -249,7 +252,10 @@
 			const max = Math.max(...numbers) // Находим максимальное значение
 			const min = Math.min(...numbers) // Находим минимальное значение
 			resultStandardDeviationY = (max - min) / getValueFromTableY
-			console.log(`Стандартное отклонение Y = ${resultStandardDeviationY}`)
+			console.log(
+				`Стандартное отклонение Y = %c${resultStandardDeviationY}`,
+				'color: blue'
+			)
 			console.log('====================================')
 			const standardDeviationY = document.querySelector(
 				'[data-standardDeviationY]'
@@ -266,13 +272,15 @@
 		if (quantityX < 30) {
 			mX = resultStandardDeviationX / Math.sqrt(quantityX - 1)
 			console.log(
-				`Стандартная ошибка среднего арифметического значения (m) X = ${mX}`
+				`Стандартная ошибка среднего арифметического значения (m) X = %c${mX}`,
+				'color: blue'
 			)
 			dataErrorX.textContent = mX.toFixed(1)
 		} else if (quantityX >= 30) {
 			mX = resultStandardDeviationX / Math.sqrt(quantityX)
 			console.log(
-				`Стандартная ошибка среднего арифметического значения (m) X = ${mX}`
+				`Стандартная ошибка среднего арифметического значения (m) X = %c${mX}`,
+				'color: blue'
 			)
 		}
 	}
@@ -280,13 +288,15 @@
 		if (quantityY < 30) {
 			mY = resultStandardDeviationY / Math.sqrt(quantityY - 1)
 			console.log(
-				`Стандартная ошибка среднего арифметического значения (m) Y = ${mY}`
+				`Стандартная ошибка среднего арифметического значения (m) Y = %c${mY}`,
+				'color: blue'
 			)
 			dataErrorY.textContent = mY.toFixed(1)
 		} else if (quantityY >= 30) {
 			mY = resultStandardDeviationY / Math.sqrt(quantityY)
 			console.log(
-				`Стандартная ошибка среднего арифметического значения (m) Y = ${mY}`
+				`Стандартная ошибка среднего арифметического значения (m) Y = %c${mY}`,
+				'color: blue'
 			)
 		}
 		console.log('====================================')
@@ -299,7 +309,10 @@
 		ResultFirst =
 			(arithmeticMeanX - arithmeticMeanY) / Math.sqrt(mX ** 2 + mY ** 2);
 		finishedResult = Math.abs(ResultFirst);	
-		console.log(`Стандартная ошибка разности (t) ${finishedResult}`)
+		console.log(
+			`Стандартная ошибка разности (t) %c${finishedResult}`,
+			'color: blue'
+		)
 		const dataFinishResult = document.querySelector('[data-finishResult]')
 		dataFinishResult.textContent = finishedResult.toFixed(2)
 	}
@@ -310,7 +323,7 @@
 	let getPFromTableP
 	function findP() {
 		f = quantityX + quantityY - 2
-		console.log(`Число степеней свободы = ${f}`)
+		console.log(`Число степеней свободы = %c${f}`, 'color: blue')
 		if (f <= 30) {
 			getPFromTableP = tableP[f]
 		} else if (f > 30 && f <= 40) {
@@ -327,20 +340,31 @@
 			getPFromTableP = tableP[36]
 		}
 		console.log(
-			`Граничное значение при 5%-ном уровне значимости (p=0,05) = ${getPFromTableP}`
+			`Граничное значение при 5%-ном уровне значимости (p=0,05) = %c${getPFromTableP}`,
+			'color: blue'
 		)
 		const container = document.querySelector('.container')
 		const paragraph = document.createElement('p')
+		const pMore = document.createElement('p')
+		const pLess = document.createElement('p')
 		if (finishedResult > getPFromTableP) {
-			paragraph.textContent = `Граничное значение при 5%-ном уровне значимости (p = 0,05) = ${getPFromTableP} (различия достоверны!)`
+			paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
 		paragraph.style.cssText =
-			'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px red'
+			'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
 		container.append(paragraph)
+		pMore.textContent = '(различия достоверны!)'
+		pMore.style.cssText =
+			'text-transform: uppercase; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
+		container.append(pMore)
 		} else if (finishedResult < getPFromTableP) {
-			paragraph.textContent = `Граничное значение при 5%-ном уровне значимости (p = 0,05) = ${getPFromTableP} (различия не достоверны!)`
+			paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
 			paragraph.style.cssText =
-				'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px red'
+				'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
 			container.append(paragraph)
+			pLess.textContent = '(различия не достоверны!)'
+			pLess.style.cssText =
+				'text-transform: uppercase; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
+			container.append(pLess)
 		}
 	}
 
