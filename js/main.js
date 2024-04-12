@@ -318,9 +318,12 @@
 	}
 	//==============================================================
 
-	// Число степеней свободы
+	// Число степеней свободы и достоверность различий
 	let f
 	let getPFromTableP
+	const paragraph = document.createElement('p')
+	const pMore = document.createElement('p')
+	const pLess = document.createElement('p')
 	function findP() {
 		f = quantityX + quantityY - 2
 		console.log(`Число степеней свободы = %c${f}`, 'color: blue')
@@ -344,9 +347,6 @@
 			'color: blue'
 		)
 		const container = document.querySelector('.container')
-		const paragraph = document.createElement('p')
-		const pMore = document.createElement('p')
-		const pLess = document.createElement('p')
 		if (finishedResult > getPFromTableP) {
 			paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
 		paragraph.style.cssText =
@@ -385,3 +385,40 @@
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
 	}
 	//==============================================================
+
+	// Прослушка событий для кнопки ОЧИСТИТЬ 
+	document.querySelector('[type="reset"]').addEventListener('click', reset) 
+	function reset (){
+		// Функция (анонимная) внутри функции заключается в скобки, затем объявляется немедленный вызов ();
+		(function () {
+			// Находим контейнеры, где могут быть динамически добавленные элементы
+			var leftContainer = document.querySelector('.form-inner__left')
+			var rightContainer = document.querySelector('.form-inner__right')
+	
+			// Удаляем все кроме первых 10 input элементов, предполагая, что они были там изначально
+			var leftInputs = leftContainer.querySelectorAll('input')
+			var rightInputs = rightContainer.querySelectorAll('input')
+	
+			if (leftInputs.length > 10) {
+				for (var i = 10; i < leftInputs.length; i++) {
+					leftInputs[i].remove()
+				}
+			}
+	
+			if (rightInputs.length > 10) {
+				for (var i = 10; i < rightInputs.length; i++) {
+					rightInputs[i].remove()
+				}
+			}
+		})();
+		(function () {
+			const containerForCalcResult = document.querySelector('.form-inner__row-result');
+			const calcResult = containerForCalcResult.querySelectorAll('.result');
+			calcResult.forEach(function(text){
+				text.textContent = '';
+			});
+			paragraph.remove();
+			pMore.remove();
+			pLess.remove();
+		})();
+	}
