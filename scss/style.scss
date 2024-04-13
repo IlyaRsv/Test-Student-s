@@ -135,6 +135,7 @@ h1 {
 		border-radius: 15px;
 		border: none;
 		&:hover {
+			-webkit-filter: saturate(250%);
 			filter: saturate(250%);
 		}
 		&:first-child {
