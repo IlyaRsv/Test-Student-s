@@ -384,6 +384,7 @@
 		const formInnerRight = document.querySelector('.form-inner__right')
 		formInnerLeft.insertAdjacentHTML('beforeend', inputLeft)
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
+		inputsText[0].focus();
 	}
 	//==============================================================
 
@@ -422,4 +423,5 @@
 			pMore.remove();
 			pLess.remove();
 		})();
+		inputsText[0].focus();
 	}
