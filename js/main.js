@@ -352,7 +352,7 @@
 		paragraph.style.cssText =
 			'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
 		container.append(paragraph)
-		pMore.textContent = '(различия достоверны!)'
+		pMore.textContent = 'различия достоверны!'
 		pMore.style.cssText =
 			'text-transform: uppercase; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
 		container.append(pMore)
@@ -361,7 +361,7 @@
 			paragraph.style.cssText =
 				'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
 			container.append(paragraph)
-			pLess.textContent = '(различия не достоверны!)'
+			pLess.textContent = 'различия не достоверны!'
 			pLess.style.cssText =
 				'text-transform: uppercase; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
 			container.append(pLess)
