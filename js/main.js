@@ -6,7 +6,8 @@
 	const dataErrorX = document.querySelector('[data-errorX]')
 	const dataErrorY = document.querySelector('[data-errorY]')
 	// Открытие клавиатуры на смартфонах для ввода чисел
-	const inputsText = document.querySelectorAll('input')
+	const inputsText = document.querySelectorAll('input');
+	inputsText[0].focus();
 	for (let input of inputsText) {
 		input.setAttribute('inputmode', 'numeric')
 		// input.setAttribute('pattern', '[0-9]*')
