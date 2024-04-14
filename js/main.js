@@ -11,8 +11,25 @@
 		inputsText[0].focus()
 	}
 	for (let input of inputsText) {
-		input.setAttribute('inputmode', 'numeric')
-		// input.setAttribute('pattern', '[0-9]*')
+		// Добавляем атрибут каждому input чтобы на смартфоне открывалась клавиатура с цифрами
+		input.setAttribute('inputmode', 'decimal') // 'decimal' для поддержки точек и запятых
+		/* Возможно для SAFARI
+    input.setAttribute('pattern', '[0-9]*') */
+
+		input.addEventListener('input', function (event) {
+			// Заменяем все, что не является цифрой, точкой или запятой, на пустую строку
+			event.target.value = event.target.value.replace(/[^\d.,]/g, '')
+		})
+		input.addEventListener('paste', function (e) {
+			// Получаем текст из буфера обмена
+			let clipboardData = e.clipboardData
+			let pastedData = clipboardData.getData('Text')
+			// Проверяем, состоит ли вставляемый текст из цифр, точек или запятых
+			if (!pastedData.match(/^[\d.,]+$/)) {
+				// Если в тексте есть что-то кроме цифр, точек или запятых, предотвращаем вставку
+				e.preventDefault()
+			}
+		})
 	}
 
 	// Таблица значений коэффициента К стандартного отклонения
