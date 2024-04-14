@@ -7,7 +7,9 @@
 	const dataErrorY = document.querySelector('[data-errorY]')
 	// Открытие клавиатуры на смартфонах для ввода чисел
 	const inputsText = document.querySelectorAll('input');
-	inputsText[0].focus();
+	if (!('ontouchstart' in window || navigator.maxTouchPoints)){
+		inputsText[0].focus()
+	}
 	for (let input of inputsText) {
 		input.setAttribute('inputmode', 'numeric')
 		// input.setAttribute('pattern', '[0-9]*')
@@ -384,7 +386,9 @@
 		const formInnerRight = document.querySelector('.form-inner__right')
 		formInnerLeft.insertAdjacentHTML('beforeend', inputLeft)
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
-		inputsText[0].focus();
+		if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
+			inputsText[0].focus()
+		}
 	}
 	//==============================================================
 
@@ -423,5 +427,7 @@
 			pMore.remove();
 			pLess.remove();
 		})();
-		inputsText[0].focus();
+		if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
+			inputsText[0].focus()
+		}
 	}
