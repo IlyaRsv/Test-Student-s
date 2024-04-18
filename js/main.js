@@ -211,12 +211,19 @@
 			if (input.value !== '') quantityX++
 		})
 
+		let firstDigit
+		let secondDigit
+
 		if (quantityX <= 9) {
 			getValueFromTableX = table[0][quantityX]
-		} else if (quantityX <= 119) {
-			const firstDigit = parseInt(quantityX.toString()[0], 10)
-			const secondDigit = parseInt(quantityX.toString()[1], 10)
-			getValueFromTableX = table[firstDigit][secondDigit]
+		} else if (quantityX <= 99) {
+			firstDigit = parseInt(quantityX.toString()[0], 10);
+			secondDigit = parseInt(quantityX.toString()[1], 10);
+			getValueFromTableX = table[firstDigit][secondDigit];
+		} else if (quantityX > 99 && quantityX <= 119){
+			firstDigit = parseInt(quantityX.toString().substring(0, 2), 10);
+			secondDigit = parseInt(quantityX.toString()[1], 10);
+			getValueFromTableX = table[firstDigit][secondDigit];
 		}
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
@@ -251,12 +258,19 @@
 			if (input.value !== '') quantityY++
 		})
 
+		let firstDigit;
+		let secondDigit;
+
 		if (quantityY <= 9) {
 			getValueFromTableY = table[0][quantityY]
-		} else if (quantityY <= 119) {
-			const firstDigit = parseInt(quantityY.toString()[0], 10)
-			const secondDigit = parseInt(quantityY.toString()[1], 10)
-			getValueFromTableY = table[firstDigit][secondDigit]
+		} else if (quantityY <= 99) {
+			firstDigit = parseInt(quantityY.toString()[0], 10);
+			secondDigit = parseInt(quantityY.toString()[1], 10);
+			getValueFromTableY = table[firstDigit][secondDigit];
+		} else if (quantityY > 99 && quantityY <=119){
+			firstDigit = parseInt(quantityY.toString().substring(0, 2), 10);
+			secondDigit = parseInt(quantityY.toString()[2], 10);
+			getValueFromTableY = table[firstDigit][secondDigit];
 		}
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
