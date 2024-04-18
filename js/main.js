@@ -425,6 +425,11 @@
 
 	// Прослушка событий для кнопки ОЧИСТИТЬ 
 	document.querySelector('[type="reset"]').addEventListener('click', reset) 
+	document.addEventListener('keydown', function(event){
+		if(event.key === 'Delete'){
+			reset();
+		}
+	})
 	function reset (){
 		// Функция (анонимная) внутри функции заключается в скобки, затем объявляется немедленный вызов ();
 		(function () {
