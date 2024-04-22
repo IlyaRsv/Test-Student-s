@@ -13,9 +13,6 @@
 	for (let input of inputsText) {
 		// Добавляем атрибут каждому input чтобы на смартфоне открывалась клавиатура с цифрами
 		input.setAttribute('inputmode', 'decimal') // 'decimal' для поддержки точек и запятых
-		/* Возможно для SAFARI
-    input.setAttribute('pattern', '[0-9]*') */
-
 		input.addEventListener('input', function (event) {
 			// Заменяем все, что не является цифрой, точкой или запятой, на пустую строку
 			event.target.value = event.target.value.replace(/[^\d.,]/g, '')
