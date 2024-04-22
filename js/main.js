@@ -401,13 +401,13 @@
 		addInputs()
 	})
 	function addInputs() {
-		let inputLeft = '<input class="input-left" type="text"/>'
-		let inputRight = '<input class="input-right" type="text"/>'
+		let inputLeft =
+			'<input class="input-left" inputmode="decimal" type="text"/>'
+		let inputRight =
+			'<input class="input-right" inputmode="decimal" type="text"/>'
 		formInnerLeft.insertAdjacentHTML('beforeend', inputLeft)
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
-		// if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
-		// 	inputsText[0].focus()
-		// }
+		
 	}
 	//==============================================================
 
