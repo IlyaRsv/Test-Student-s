@@ -11,12 +11,13 @@
 	const inputsText = document.getElementsByTagName('input');
 	if (!('ontouchstart' in window || navigator.maxTouchPoints)){
 		inputsText[0].focus()
-	} else {
-		for (let item of inputsText){
+	} 
+		
+	for (let item of inputsText){
 			// Добавляем атрибут inputmode ко всем тегам input
 			item.setAttribute('inputmode', 'decimal')
-		}
 	}
+	
 	formInnerLeft.addEventListener('input', inputFocus)
 	formInnerLeft.addEventListener('paste', handlePaste)
 	formInnerRight.addEventListener('input', inputFocus)
