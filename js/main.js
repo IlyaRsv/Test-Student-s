@@ -156,19 +156,20 @@
 		let count = 0 // Переменная для подсчета количества элементов
 		let firstSigmaX
 		for (let item of inputLeft) {
-			// Если запятая (,), то меняется на точку (.), потому что JS работает
-			let valueFirst = item.value.replace(',', '.')
-			// только с десятичыми числами только с использованием точки (.)
-			let value = parseFloat(valueFirst) * 100000
-			value = (value - arithmeticMeanX * 100000) ** 2 / 10000000000
-			sum += value
-			count++
-			if (!isNaN(value)) {
+			if (!isNaN(item.value) && item.value !== '') {
+				// Если запятая (,), то меняется на точку (.), потому что JS работает
+				let valueFirst = item.value.replace(',', '.')
+				// только с десятичыми числами только с использованием точки (.)
+				let value = parseFloat(valueFirst) * 100000
+				value = (value - arithmeticMeanX * 100000) ** 2 / 10000000000
+				sum += value
+				count++
 				firstSigmaX = Math.sqrt(sum / count) // Вычисляем квадратическое отклонение
 				const sigma = Math.sqrt(sum / count).toFixed(1)
 				const resultSigmaX = document.querySelector('[data-sigmaX]')
 				resultSigmaX.textContent = `${arithmeticMeanX.toFixed(1)} ± ${sigma}`
 			}
+			
 		}
 		console.log(`Среднее квадратическое отклонение X = %c${firstSigmaX}`, 'color: blue')
 	}
@@ -177,14 +178,14 @@
 		let count = 0 // Переменная для подсчета количества элементов
 		let firstSigmaY
 		for (let item of inputRight) {
-			// Если запятая (,), то меняется на точку (.), потому что JS работает
-			let valueFirst = item.value.replace(',', '.')
-			// только с десятичыми числами только с использованием точки (.)
-			let value = parseFloat(valueFirst) * 100000
-			value = (value - arithmeticMeanY * 100000) ** 2 / 10000000000
-			sum += value
-			count++
-			if (!isNaN(value)) {
+			if (!isNaN(item.value) && item.value !== ''){
+				// Если запятая (,), то меняется на точку (.), потому что JS работает
+				let valueFirst = item.value.replace(',', '.')
+				// только с десятичыми числами только с использованием точки (.)
+				let value = parseFloat(valueFirst) * 100000
+				value = (value - arithmeticMeanY * 100000) ** 2 / 10000000000
+				sum += value
+				count++
 				firstSigmaY = Math.sqrt(sum / count) // Вычисляем квадратическое отклонение
 				const sigma = Math.sqrt(sum / count).toFixed(1)
 				const resultSigmaY = document.querySelector('[data-sigmaY]')
