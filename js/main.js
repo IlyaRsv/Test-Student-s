@@ -5,28 +5,32 @@
 	const resultY = document.querySelector('[data-averageY]')
 	const dataErrorX = document.querySelector('[data-errorX]')
 	const dataErrorY = document.querySelector('[data-errorY]')
+	const formInnerLeft = document.querySelector('.form-inner__left')
+	const formInnerRight = document.querySelector('.form-inner__right')
 	// Открытие клавиатуры на смартфонах для ввода чисел
 	const inputsText = document.querySelectorAll('input');
 	if (!('ontouchstart' in window || navigator.maxTouchPoints)){
 		inputsText[0].focus()
 	}
 	for (let input of inputsText) {
-		// Добавляем атрибут каждому input чтобы на смартфоне открывалась клавиатура с цифрами
-		input.setAttribute('inputmode', 'decimal') // 'decimal' для поддержки точек и запятых
-		input.addEventListener('input', function (event) {
-			// Заменяем все, что не является цифрой, точкой или запятой, на пустую строку
-			event.target.value = event.target.value.replace(/[^\d.,]/g, '')
-		})
-		input.addEventListener('paste', function (e) {
-			// Получаем текст из буфера обмена
-			let clipboardData = e.clipboardData
-			let pastedData = clipboardData.getData('Text')
-			// Проверяем, состоит ли вставляемый текст из цифр, точек или запятых
-			if (!pastedData.match(/^[\d.,]+$/)) {
-				// Если в тексте есть что-то кроме цифр, точек или запятых, предотвращаем вставку
-				e.preventDefault()
-			}
-		})
+		
+	}
+	formInnerLeft.addEventListener('input', inputFocus)
+	formInnerLeft.addEventListener('paste', handlePaste)
+	formInnerRight.addEventListener('input', inputFocus)
+	formInnerRight.addEventListener('paste', handlePaste)
+	function inputFocus(event){
+		// Добавляем атрибут inputmode к целевому элементу
+		event.target.setAttribute('inputmode', 'decimal');
+		// Заменяем все запятые на точки и удаляем нежелательные символы
+		event.target.value = event.target.value.replace(/,/g, '.').replace(/[^\d.,]/g, '');
+	}
+	function handlePaste(e) {
+		let clipboardData = e.clipboardData
+		let pastedData = clipboardData.getData('Text')
+		if (!pastedData.match(/^[\d.,]+$/)) {
+			e.preventDefault()
+		}
 	}
 
 	// Таблица значений коэффициента К стандартного отклонения
@@ -107,10 +111,7 @@
 		let sum = 0 // Переменная для суммы
 		let count = 0 // Переменная для подсчета количества элементов
 		for (let item of inputLeft) {
-			// Если запятая (,), то меняется на точку (.), потому что JS работает
-			let valueFirst = item.value.replace(',', '.')
-			// только с десятичыми числами только с использованием точки (.)
-			let value = parseFloat(valueFirst) * 100
+			let value = parseFloat(item.value) * 100
 			if (!isNaN(value)) {
 				// Проверяем, что значение является числом
 				sum += value // Добавляем значение к сумме
@@ -128,10 +129,7 @@
 		let sum = 0 // Переменная для суммы
 		let count = 0 // Переменная для подсчета количества элементов
 		for (let item of inputRight) {
-			// Замена запятой, если есть (,) на точку (.), потому что JS работает
-			let valueFirst = item.value.replace(',', '.')
-			// только с десятичыми числами только с использованием точки (.)
-			let value = parseFloat(valueFirst) * 100
+			let value = parseFloat(item.value) * 100
 			if (!isNaN(value)) {
 				// Проверяем, что значение является числом
 				sum += value // Добавляем значение к сумме
@@ -151,45 +149,38 @@
 	function sigmaX() {
 		let sum = 0 // Переменная для суммы
 		let count = 0 // Переменная для подсчета количества элементов
-		let firstSigmaX
 		for (let item of inputLeft) {
-			if (!isNaN(item.value)) {
-				// Если запятая (,), то меняется на точку (.), потому что JS работает
-				let valueFirst = item.value.replace(',', '.')
-				// только с десятичыми числами только с использованием точки (.)
-				let value = parseFloat(valueFirst) * 100000
+			if (!isNaN(item.value) && item.value !== '') {
+				let value = parseFloat(item.value) * 100000
 				value = (value - arithmeticMeanX * 100000) ** 2 / 10000000000
 				sum += value
 				count++
-				firstSigmaX = Math.sqrt(sum / count) // Вычисляем квадратическое отклонение
-				const sigma = Math.sqrt(sum / count).toFixed(1)
-				const resultSigmaX = document.querySelector('[data-sigmaX]')
-				resultSigmaX.textContent = `${arithmeticMeanX.toFixed(1)} ± ${sigma}`
 			}
-			
 		}
-		console.log(`Среднее квадратическое отклонение X = %c${firstSigmaX}`, 'color: blue')
+		let sigmaX = Math.sqrt(sum / count)
+		const resultSigmaX = document.querySelector('[data-sigmaX]')
+		resultSigmaX.textContent = `${arithmeticMeanX.toFixed(
+			1
+		)} ± ${sigmaX.toFixed(1)}`
+		console.log(`Среднее квадратическое отклонение X = %c${sigmaX}`, 'color: blue')
 	}
 	function sigmaY() {
 		let sum = 0 // Переменная для суммы
 		let count = 0 // Переменная для подсчета количества элементов
-		let firstSigmaY
 		for (let item of inputRight) {
-			if (!isNaN(item.value)){
-				// Если запятая (,), то меняется на точку (.), потому что JS работает
-				let valueFirst = item.value.replace(',', '.')
-				// только с десятичыми числами только с использованием точки (.)
-				let value = parseFloat(valueFirst) * 100000
+			if (!isNaN(item.value) && item.value !== '') {
+				let value = parseFloat(item.value) * 100000
 				value = (value - arithmeticMeanY * 100000) ** 2 / 10000000000
 				sum += value
 				count++
-				firstSigmaY = Math.sqrt(sum / count) // Вычисляем квадратическое отклонение
-				const sigma = Math.sqrt(sum / count).toFixed(1)
-				const resultSigmaY = document.querySelector('[data-sigmaY]')
-				resultSigmaY.textContent = `${arithmeticMeanY.toFixed(1)} ± ${sigma}`
 			}
 		}
-		console.log(`Среднее квадратическое отклонение Y = %c${firstSigmaY}`, 'color: blue')
+		let sigmaY = Math.sqrt(sum / count)
+		const resultSigmaY = document.querySelector('[data-sigmaY]')
+		resultSigmaY.textContent = `${arithmeticMeanY.toFixed(
+			1
+		)} ± ${sigmaY.toFixed(1)}`
+		console.log(`Среднее квадратическое отклонение Y = %c${sigmaY}`, 'color: blue')
 		console.log('====================================')
 	}
 	//==============================================================
@@ -226,7 +217,7 @@
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
 		inputsLeft.forEach((input) => {
-			const value = parseFloat(input.value.replace(',', '.')) // Преобразуем значение инпута в число
+			const value = parseFloat(input.value) // Преобразуем значение инпута в число
 			if (!isNaN(value)) {
 				// Проверяем, является ли преобразованное значение числом
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
@@ -273,7 +264,7 @@
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
 		inputsRight.forEach((input) => {
-			const value = parseFloat(input.value.replace(',', '.')) // Преобразуем значение инпута в число
+			const value = parseFloat(input.value) // Преобразуем значение инпута в число
 			if (!isNaN(value)) {
 				// Проверяем, является ли преобразованное значение числом
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
@@ -411,8 +402,6 @@
 	function addInputs() {
 		let inputLeft = '<input class="input-left" type="text"/>'
 		let inputRight = '<input class="input-right" type="text"/>'
-		const formInnerLeft = document.querySelector('.form-inner__left')
-		const formInnerRight = document.querySelector('.form-inner__right')
 		formInnerLeft.insertAdjacentHTML('beforeend', inputLeft)
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
 		// if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
