@@ -304,7 +304,7 @@
 	let mX
 	let mY
 	function arithmeticMeanErrorX() {
-		if (quantityX < 30) {
+		if (quantityX > 0 && quantityX < 30) {
 			mX = resultStandardDeviationX / Math.sqrt(quantityX - 1)
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) X = %c${mX}`,
@@ -320,7 +320,7 @@
 		}
 	}
 	function arithmeticMeanErrorY() {
-		if (quantityY < 30) {
+		if (quantityY > 0 && quantityY < 30) {
 			mY = resultStandardDeviationY / Math.sqrt(quantityY - 1)
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) Y = %c${mY}`,
