@@ -418,9 +418,9 @@
 		const formInnerRight = document.querySelector('.form-inner__right')
 		formInnerLeft.insertAdjacentHTML('beforeend', inputLeft)
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
-		if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
-			inputsText[0].focus()
-		}
+		// if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
+		// 	inputsText[0].focus()
+		// }
 	}
 	//==============================================================
 
