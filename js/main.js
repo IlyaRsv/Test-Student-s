@@ -378,7 +378,7 @@
 		container.append(paragraph)
 		pMore.textContent = 'различия достоверны!'
 		pMore.style.cssText =
-			'text-transform: uppercase; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
+			'text-transform: uppercase; font-weight: 700; color: green; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
 		container.append(pMore)
 		} else if (finishedResult < getPFromTableP) {
 			paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
@@ -387,7 +387,7 @@
 			container.append(paragraph)
 			pLess.textContent = 'различия не достоверны!'
 			pLess.style.cssText =
-				'text-transform: uppercase; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
+				'text-transform: uppercase; font-weight: 700; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
 			container.append(pLess)
 		}
 	}
