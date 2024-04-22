@@ -246,7 +246,7 @@ h1 {
   .form-inner button:last-child {
     position: absolute;
     bottom: 0;
-    left: 77%;
+    left: 78.5%;
   }
 }
 .form-inner button[data-btn] {
