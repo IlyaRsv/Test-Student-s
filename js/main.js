@@ -153,7 +153,7 @@
 		let count = 0 // Переменная для подсчета количества элементов
 		let firstSigmaX
 		for (let item of inputLeft) {
-			if (!isNaN(item.value) && item.value !== '') {
+			if (!isNaN(item.value)) {
 				// Если запятая (,), то меняется на точку (.), потому что JS работает
 				let valueFirst = item.value.replace(',', '.')
 				// только с десятичыми числами только с использованием точки (.)
@@ -175,7 +175,7 @@
 		let count = 0 // Переменная для подсчета количества элементов
 		let firstSigmaY
 		for (let item of inputRight) {
-			if (!isNaN(item.value) && item.value !== ''){
+			if (!isNaN(item.value)){
 				// Если запятая (,), то меняется на точку (.), потому что JS работает
 				let valueFirst = item.value.replace(',', '.')
 				// только с десятичыми числами только с использованием точки (.)
