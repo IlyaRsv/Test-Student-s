@@ -8,20 +8,20 @@
 	const formInnerLeft = document.querySelector('.form-inner__left')
 	const formInnerRight = document.querySelector('.form-inner__right')
 	// Открытие клавиатуры на смартфонах для ввода чисел
-	const inputsText = document.querySelectorAll('input');
+	const inputsText = document.getElementsByTagName('input');
 	if (!('ontouchstart' in window || navigator.maxTouchPoints)){
 		inputsText[0].focus()
-	}
-	for (let input of inputsText) {
-		
+	} else {
+		for (let item of inputsText){
+			// Добавляем атрибут inputmode ко всем тегам input
+			item.setAttribute('inputmode', 'decimal')
+		}
 	}
 	formInnerLeft.addEventListener('input', inputFocus)
 	formInnerLeft.addEventListener('paste', handlePaste)
 	formInnerRight.addEventListener('input', inputFocus)
 	formInnerRight.addEventListener('paste', handlePaste)
 	function inputFocus(event){
-		// Добавляем атрибут inputmode к целевому элементу
-		event.target.setAttribute('inputmode', 'decimal');
 		// Заменяем все запятые на точки и удаляем нежелательные символы
 		event.target.value = event.target.value.replace(/,/g, '.').replace(/[^\d.,]/g, '');
 	}
