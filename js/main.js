@@ -1,6 +1,6 @@
 	const form = document.querySelector('form')
-	const inputLeft = document.querySelectorAll('.input-left')
-	const inputRight = document.querySelectorAll('.input-right')
+	const inputLeft = document.getElementsByClassName('input-left')
+	const inputRight = document.getElementsByClassName('input-right')
 	const resultX = document.querySelector('[data-averageX]')
 	const resultY = document.querySelector('[data-averageY]')
 	const dataErrorX = document.querySelector('[data-errorX]')
