@@ -107,39 +107,47 @@
 	// Вычисление средней арифметической
 	let arithmeticMeanX
 	let arithmeticMeanY
+	let quantityX
+	let quantityY
 
 	function calcAverageX() {
 		let sum = 0 // Переменная для суммы
-		let count = 0 // Переменная для подсчета количества элементов
+		quantityX = 0 // Переменная для подсчета количества элементов
 		for (let item of inputLeft) {
 			let value = parseFloat(item.value) * 100
-			if (!isNaN(value)) {
+			if (!isNaN(value) && value !== '') {
 				// Проверяем, что значение является числом
 				sum += value // Добавляем значение к сумме
-				count++ // Увеличиваем счетчик
+				quantityX++ // Увеличиваем счетчик
 			}
 		}
-		if (count > 0) {
+		if (quantityX > 0) {
 			// Вычисляем среднее значение
-			arithmeticMeanX = sum / count / 100
-			console.log(`Средняя арифметическая X = %c${arithmeticMeanX}`, 'color: blue')
+			arithmeticMeanX = sum / quantityX / 100
+			console.log(
+				`Средняя арифметическая X = %c${arithmeticMeanX}`,
+				'color: blue'
+			)
 			resultX.textContent = arithmeticMeanX.toFixed(1) // Округляем до ближайшего десятого и до первого числа после запятой
 		}
 	}
 	function calcAverageY() {
 		let sum = 0 // Переменная для суммы
-		let count = 0 // Переменная для подсчета количества элементов
+		quantityY = 0 // Переменная для подсчета количества элементов
 		for (let item of inputRight) {
 			let value = parseFloat(item.value) * 100
-			if (!isNaN(value)) {
+			if (!isNaN(value) && value !=='') {
 				// Проверяем, что значение является числом
 				sum += value // Добавляем значение к сумме
-				count++ // Увеличиваем счетчик
+				quantityY++ // Увеличиваем счетчик
 			}
 		}
-		if (count > 0) {
-			arithmeticMeanY = sum / count / 100
-			console.log(`Средняя арифметическая Y = %c${arithmeticMeanY}`, 'color: blue')
+		if (quantityY > 0) {
+			arithmeticMeanY = sum / quantityY / 100
+			console.log(
+				`Средняя арифметическая Y = %c${arithmeticMeanY}`,
+				'color: blue'
+			)
 			console.log('====================================')
 			resultY.textContent = arithmeticMeanY.toFixed(1) // Округляем до ближайшего десятого и до первого числа после запятой
 		}
@@ -149,16 +157,14 @@
 	//Вычисление средне квадратического отклонения
 	function sigmaX() {
 		let sum = 0 // Переменная для суммы
-		let count = 0 // Переменная для подсчета количества элементов
 		for (let item of inputLeft) {
 			if (!isNaN(item.value) && item.value !== '') {
 				let value = parseFloat(item.value) * 100000
 				value = (value - arithmeticMeanX * 100000) ** 2 / 10000000000
 				sum += value
-				count++
 			}
 		}
-		let sigmaX = Math.sqrt(sum / count)
+		let sigmaX = Math.sqrt(sum / quantityX)
 		const resultSigmaX = document.querySelector('[data-sigmaX]')
 		resultSigmaX.textContent = `${arithmeticMeanX.toFixed(
 			1
@@ -167,16 +173,14 @@
 	}
 	function sigmaY() {
 		let sum = 0 // Переменная для суммы
-		let count = 0 // Переменная для подсчета количества элементов
 		for (let item of inputRight) {
 			if (!isNaN(item.value) && item.value !== '') {
 				let value = parseFloat(item.value) * 100000
 				value = (value - arithmeticMeanY * 100000) ** 2 / 10000000000
 				sum += value
-				count++
 			}
 		}
-		let sigmaY = Math.sqrt(sum / count)
+		let sigmaY = Math.sqrt(sum / quantityY)
 		const resultSigmaY = document.querySelector('[data-sigmaY]')
 		resultSigmaY.textContent = `${arithmeticMeanY.toFixed(
 			1
@@ -189,17 +193,9 @@
 	// Стандартное отклонение
 	let resultStandardDeviationX
 	let resultStandardDeviationY
-	let quantityX
-	let quantityY
 
 	function standardDeviationX() {
 		let getValueFromTableX
-		// Считаем количество заполненных инпутов
-		quantityX = 0
-		for (let velInput of inputLeft){
-			if (velInput.value !== '') quantityX++
-		}
-
 		let firstDigit
 		let secondDigit
 
@@ -240,12 +236,6 @@
 	}
 	function standardDeviationY() {
 		let getValueFromTableY
-		quantityY = 0
-		// Считаем количество заполненных инпутов
-		for (let valInput of inputRight){
-			if (valInput.value !== '') quantityY++
-		}
-
 		let firstDigit;
 		let secondDigit;
 
@@ -297,14 +287,14 @@
 				`Стандартная ошибка среднего арифметического значения (m) X = %c${mX}`,
 				'color: blue'
 			)
-			dataErrorX.textContent = mX.toFixed(1)
 		} else if (quantityX >= 30) {
 			mX = resultStandardDeviationX / Math.sqrt(quantityX)
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) X = %c${mX}`,
 				'color: blue'
-			)
-		}
+				)
+			}
+		dataErrorX.textContent = mX.toFixed(1)
 	}
 	function arithmeticMeanErrorY() {
 		if (quantityY > 0 && quantityY < 30) {
@@ -313,14 +303,14 @@
 				`Стандартная ошибка среднего арифметического значения (m) Y = %c${mY}`,
 				'color: blue'
 			)
-			dataErrorY.textContent = mY.toFixed(1)
 		} else if (quantityY >= 30) {
 			mY = resultStandardDeviationY / Math.sqrt(quantityY)
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) Y = %c${mY}`,
 				'color: blue'
-			)
-		}
+				)
+			}
+		dataErrorY.textContent = mY.toFixed(1)
 		console.log('====================================')
 	}
 	//==============================================================
@@ -415,21 +405,21 @@
 		// Функция (анонимная) внутри функции заключается в скобки, затем объявляется немедленный вызов ();
 		(function () {
 			// Находим контейнеры, где могут быть динамически добавленные элементы
-			var leftContainer = document.querySelector('.form-inner__left')
-			var rightContainer = document.querySelector('.form-inner__right')
+			let leftContainer = document.querySelector('.form-inner__left')
+			let rightContainer = document.querySelector('.form-inner__right')
 	
 			// Удаляем все кроме первых 10 input элементов, предполагая, что они были там изначально
-			var leftInputs = leftContainer.querySelectorAll('input')
-			var rightInputs = rightContainer.querySelectorAll('input')
+			let leftInputs = leftContainer.querySelectorAll('input')
+			let rightInputs = rightContainer.querySelectorAll('input')
 	
 			if (leftInputs.length > 10) {
-				for (var i = 10; i < leftInputs.length; i++) {
+				for (let i = 10; i < leftInputs.length; i++) {
 					leftInputs[i].remove()
 				}
 			}
 	
 			if (rightInputs.length > 10) {
-				for (var i = 10; i < rightInputs.length; i++) {
+				for (let i = 10; i < rightInputs.length; i++) {
 					rightInputs[i].remove()
 				}
 			}
