@@ -194,7 +194,7 @@
 
 	function standardDeviationX() {
 		let getValueFromTableX
-		const inputsLeft = document.querySelectorAll('.input-left')
+		const inputsLeft = document.getElementsByClassName('input-left')
 		// Считаем количество заполненных инпутов
 		quantityX = 0
 		inputsLeft.forEach((input) => {
@@ -241,7 +241,7 @@
 	}
 	function standardDeviationY() {
 		let getValueFromTableY
-		const inputsRight = document.querySelectorAll('.input-right')
+		const inputsRight = document.getElementsByClassName('input-right')
 		// Считаем количество заполненных инпутов
 		quantityY = 0
 		inputsRight.forEach((input) => {
