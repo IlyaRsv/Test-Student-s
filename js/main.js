@@ -194,12 +194,11 @@
 
 	function standardDeviationX() {
 		let getValueFromTableX
-		const inputsLeft = document.getElementsByClassName('input-left')
 		// Считаем количество заполненных инпутов
 		quantityX = 0
-		inputsLeft.forEach((input) => {
-			if (input.value !== '') quantityX++
-		})
+		for (let velInput of inputLeft){
+			if (velInput.value !== '') quantityX++
+		}
 
 		let firstDigit
 		let secondDigit
@@ -217,13 +216,13 @@
 		}
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
-		inputsLeft.forEach((input) => {
-			const value = parseFloat(input.value) // Преобразуем значение инпута в число
+		for (let velInput of inputLeft){
+			const value = parseFloat(velInput.value) // Преобразуем значение инпута в число
 			if (!isNaN(value)) {
 				// Проверяем, является ли преобразованное значение числом
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
 			}
-		})
+		}
 		if (numbers.length > 0) {
 			// Проверяем, есть ли в массиве числа
 			let max = Math.max(...numbers) // Находим максимальное значение
@@ -241,12 +240,11 @@
 	}
 	function standardDeviationY() {
 		let getValueFromTableY
-		const inputsRight = document.getElementsByClassName('input-right')
-		// Считаем количество заполненных инпутов
 		quantityY = 0
-		inputsRight.forEach((input) => {
-			if (input.value !== '') quantityY++
-		})
+		// Считаем количество заполненных инпутов
+		for (let valInput of inputRight){
+			if (valInput.value !== '') quantityY++
+		}
 
 		let firstDigit;
 		let secondDigit;
@@ -264,13 +262,13 @@
 		}
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
-		inputsRight.forEach((input) => {
-			const value = parseFloat(input.value) // Преобразуем значение инпута в число
+		for (let valInput of inputRight){
+			const value = parseFloat(valInput.value) // Преобразуем значение инпута в число
 			if (!isNaN(value)) {
 				// Проверяем, является ли преобразованное значение числом
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
 			}
-		})
+		}
 		if (numbers.length > 0) {
 			// Проверяем, есть ли в массиве числа
 			const max = Math.max(...numbers) // Находим максимальное значение
