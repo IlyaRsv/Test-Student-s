@@ -272,9 +272,9 @@
 		}
 		if (numbers.length > 0) {
 			// Проверяем, есть ли в массиве числа
-			maxX = Math.max(...numbers) // Находим максимальное значение
-			minX = Math.min(...numbers) // Находим минимальное значение
-			resultStandardDeviationY = (maxX - minX) / getValueFromTableY
+			maxY = Math.max(...numbers) // Находим максимальное значение
+			minY = Math.min(...numbers) // Находим минимальное значение
+			resultStandardDeviationY = (maxY - minY) / getValueFromTableY
 			console.log(
 				`Стандартное отклонение Y = %c${resultStandardDeviationY}`,
 				'color: blue'
