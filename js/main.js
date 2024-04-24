@@ -94,8 +94,8 @@
 		event.preventDefault()
 		calcAverageX()
 		calcAverageY()
-		sigmaX()
-		sigmaY()
+		calcSigmaX()
+		calcSigmaY()
 		standardDeviationX()
 		standardDeviationY()
 		arithmeticMeanErrorX()
@@ -155,7 +155,8 @@
 	//==============================================================
 
 	//Вычисление средне квадратического отклонения
-	function sigmaX() {
+	let sigmaX
+	function calcSigmaX() {
 		let sum = 0 // Переменная для суммы
 		for (let item of inputLeft) {
 			if (!isNaN(item.value) && item.value !== '') {
@@ -169,9 +170,13 @@
 		resultSigmaX.textContent = `${arithmeticMeanX.toFixed(
 			1
 		)} ± ${sigmaX.toFixed(1)}`
-		console.log(`Среднее квадратическое отклонение X = %c${sigmaX}`, 'color: blue')
+		console.log(
+			`Среднее квадратическое отклонение X = %c${sigmaX}`,
+			'color: blue'
+		)
 	}
-	function sigmaY() {
+	let sigmaY
+	function calcSigmaY() {
 		let sum = 0 // Переменная для суммы
 		for (let item of inputRight) {
 			if (!isNaN(item.value) && item.value !== '') {
@@ -185,7 +190,10 @@
 		resultSigmaY.textContent = `${arithmeticMeanY.toFixed(
 			1
 		)} ± ${sigmaY.toFixed(1)}`
-		console.log(`Среднее квадратическое отклонение Y = %c${sigmaY}`, 'color: blue')
+		console.log(
+			`Среднее квадратическое отклонение Y = %c${sigmaY}`,
+			'color: blue'
+		)
 		console.log('====================================')
 	}
 	//==============================================================
@@ -193,9 +201,10 @@
 	// Стандартное отклонение
 	let resultStandardDeviationX
 	let resultStandardDeviationY
-
+	let maxX
+	let minX
+	let getValueFromTableX
 	function standardDeviationX() {
-		let getValueFromTableX
 		let firstDigit
 		let secondDigit
 
@@ -221,9 +230,9 @@
 		}
 		if (numbers.length > 0) {
 			// Проверяем, есть ли в массиве числа
-			let max = Math.max(...numbers) // Находим максимальное значение
-			let min = Math.min(...numbers) // Находим минимальное значение
-			resultStandardDeviationX = (max - min) / getValueFromTableX
+			maxX = Math.max(...numbers) // Находим максимальное значение
+			minX = Math.min(...numbers) // Находим минимальное значение
+			resultStandardDeviationX = (maxX - minX) / getValueFromTableX
 			console.log(
 				`Стандартное отклонение X = %c${resultStandardDeviationX}`,
 				'color: blue'
@@ -234,8 +243,10 @@
 			standardDeviationX.textContent = resultStandardDeviationX.toFixed(1)
 		}
 	}
+	let maxY
+	let minY
+	let getValueFromTableY
 	function standardDeviationY() {
-		let getValueFromTableY
 		let firstDigit;
 		let secondDigit;
 
@@ -261,9 +272,9 @@
 		}
 		if (numbers.length > 0) {
 			// Проверяем, есть ли в массиве числа
-			const max = Math.max(...numbers) // Находим максимальное значение
-			const min = Math.min(...numbers) // Находим минимальное значение
-			resultStandardDeviationY = (max - min) / getValueFromTableY
+			maxX = Math.max(...numbers) // Находим максимальное значение
+			minX = Math.min(...numbers) // Находим минимальное значение
+			resultStandardDeviationY = (maxX - minX) / getValueFromTableY
 			console.log(
 				`Стандартное отклонение Y = %c${resultStandardDeviationY}`,
 				'color: blue'
@@ -395,7 +406,6 @@
 			'<input class="input-right" inputmode="decimal" type="text"/>'
 		formInnerLeft.insertAdjacentHTML('beforeend', inputLeft)
 		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
-		
 	}
 	//==============================================================
 
