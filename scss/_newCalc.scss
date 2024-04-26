@@ -2,8 +2,11 @@
 //************************************************************
 .grid {
 	display: grid;
+	grid-template-columns: 70px repeat(2, -webkit-max-content);
 	grid-template-columns: 70px repeat(2, max-content);
 	grid-template-rows: repeat(2, 1fr);
+	max-width: -webkit-max-content;
+	max-width: -moz-max-content;
 	max-width: max-content;
 }
 .firstP {
@@ -84,6 +87,8 @@
 }
 h3 {
 	background-color: lightskyblue;
+	max-width: -webkit-max-content;
+	max-width: -moz-max-content;
 	max-width: max-content;
 	margin: 30px auto 30px auto;
 	text-align: center;
@@ -176,6 +181,7 @@ p:nth-of-type(3) {
 }
 // Среднее квадратическое отклонение =========================
 .sigmaGrid {
+	grid-template-columns: 60px 70px repeat(2, -webkit-max-content);
 	grid-template-columns: 60px 70px repeat(2, max-content);
 	& > div:first-of-type {
 		grid-row: 1/-1;
@@ -342,6 +348,7 @@ p:nth-of-type(3) {
 }
 // Cтандартная ошибка среднего арифметического значения (m) ==
 .standardError {
+	grid-template-columns: 135px 60px repeat(2, -webkit-max-content);
 	grid-template-columns: 135px 60px repeat(2, max-content);
 	& > div:first-of-type {
 		grid-row: 1/-1;
@@ -392,6 +399,7 @@ p:nth-of-type(3) {
 }
 // Cредняя ошибка разности (t)
 .meanDifferenceError {
+	grid-template-columns: 50px repeat(2, -webkit-max-content);
 	grid-template-columns: 50px repeat(2, max-content);
 	// .meanDifferenceError__top-element
 	// &__top-element {
