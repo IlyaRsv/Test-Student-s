@@ -165,7 +165,7 @@
 				sum += value
 			}
 		}
-		let sigmaX = Math.sqrt(sum / quantityX)
+		sigmaX = Math.sqrt(sum / quantityX)
 		const resultSigmaX = document.querySelector('[data-sigmaX]')
 		resultSigmaX.textContent = `${arithmeticMeanX.toFixed(
 			1
@@ -185,7 +185,7 @@
 				sum += value
 			}
 		}
-		let sigmaY = Math.sqrt(sum / quantityY)
+		sigmaY = Math.sqrt(sum / quantityY)
 		const resultSigmaY = document.querySelector('[data-sigmaY]')
 		resultSigmaY.textContent = `${arithmeticMeanY.toFixed(
 			1
@@ -413,38 +413,251 @@
 	document.querySelector('[type="reset"]').addEventListener('click', reset) 
 	function reset (){
 		// Функция (анонимная) внутри функции заключается в скобки, затем объявляется немедленный вызов ();
-		(function () {
+		;(function () {
 			// Находим контейнеры, где могут быть динамически добавленные элементы
 			let leftContainer = document.querySelector('.form-inner__left')
 			let rightContainer = document.querySelector('.form-inner__right')
-	
+
 			// Удаляем все кроме первых 10 input элементов, предполагая, что они были там изначально
 			let leftInputs = leftContainer.querySelectorAll('input')
 			let rightInputs = rightContainer.querySelectorAll('input')
-	
+
 			if (leftInputs.length > 10) {
 				for (let i = 10; i < leftInputs.length; i++) {
 					leftInputs[i].remove()
 				}
 			}
-	
+
 			if (rightInputs.length > 10) {
 				for (let i = 10; i < rightInputs.length; i++) {
 					rightInputs[i].remove()
 				}
 			}
-		})();
-		(function () {
-			const containerForCalcResult = document.querySelector('.form-inner__row-result');
-			const calcResult = containerForCalcResult.querySelectorAll('.result');
-			calcResult.forEach(function(text){
-				text.textContent = '';
-			});
-			paragraph.remove();
-			pMore.remove();
-			pLess.remove();
-		})();
+		})()
+		;(function () {
+			const containerForCalcResult = document.querySelector(
+				'.form-inner__row-result'
+			)
+			const calcResult = containerForCalcResult.querySelectorAll('.result')
+			calcResult.forEach(function (text) {
+				text.textContent = ''
+			})
+			paragraph.remove()
+			pMore.remove()
+			pLess.remove()
+		})()
 		if (!('ontouchstart' in window || navigator.maxTouchPoints)) {
 			inputsText[0].focus()
 		}
+		// ДОБАВЛЕНО*************************************************
+		;(function () {
+			dataNone.forEach(function (item) {
+				item.classList.add('none')
+			})
+		})()
+		dataLessX.classList.add('none')
+		dataLessY.classList.add('none')
+		dataMoreX.classList.add('none')
+		dataMoreY.classList.add('none')
 	}
+
+	// НОВОЕ************************************
+// Порядок вычисления достоверности различий
+//******************************************
+//**********************НОВЫЕ ПЕРЕМЕННЫЕ*******************
+let dataNone = document.querySelectorAll('[data-none]')
+const dataLessX = document.querySelector('[data-lessX]')
+const dataMoreX = document.querySelector('[data-moreX]')
+const dataLessY = document.querySelector('[data-lessY]')
+const dataMoreY = document.querySelector('[data-moreY]')
+//*****************************************
+form.addEventListener('submit', calc)
+function calc() {
+	removeClassNone()
+	howCalcArithmeticMeanX()
+	howCalcArithmeticMeanY()
+	howCalcMeanSquareDeviationX()
+	howCalcMeanSquareDeviationY()
+	howCalcStandardDeviationX()
+	howCalcStandardDeviationY()
+	howCalcStandardErrorX()
+	howCalcStandardErrorY()
+	howCalcMeanDifferenceError()
+	howCalcDegreesOfFreedom()
+}
+//------------------------------------------
+function removeClassNone() {
+	dataNone.forEach(function (item) {
+		item.classList.remove('none')
+	})
+}
+// Среднее арифметическое
+function howCalcArithmeticMeanX() {
+	let dividendX = document.querySelector('[data-dividendX]')
+	let divisorX = document.querySelector('[data-divisorX]')
+	let quotientX = document.querySelector('[data-quotientX]')
+	let sumStringTop = '' // Строка для накопления значений
+	for (let item of inputLeft) {
+		if (!isNaN(item.value) && item.value !== '') {
+			let digit = item.value
+			sumStringTop += `${digit} + ` // Добавляем значение к строке
+		}
+	}
+	if (sumStringTop.endsWith(' + ')) {
+		// Убираем последний лишний " + " из строки
+		sumStringTop = sumStringTop.slice(0, -3)
+	}
+	if (quantityX > 0) {
+		dividendX.textContent = sumStringTop
+		divisorX.textContent = quantityX
+		quotientX.textContent = `= ${arithmeticMeanX.toFixed(1)}`
+	}
+}
+function howCalcArithmeticMeanY() {
+	let dividendY = document.querySelector('[data-dividendY]')
+	let divisorY = document.querySelector('[data-divisorY]')
+	let quotientY = document.querySelector('[data-quotientY]')
+	let sumStringTop = '' // Строка для накопления значений
+	for (let item of inputRight) {
+		if (!isNaN(item.value) && item.value !== '') {
+			let digit = item.value
+			sumStringTop += `${digit} + ` // Добавляем значение к строке
+		}
+	}
+	if (sumStringTop.endsWith(' + ')) {
+		// Убираем последний лишний " + " из строки
+		sumStringTop = sumStringTop.slice(0, -3)
+	}
+	if (quantityY > 0) {
+		dividendY.textContent = sumStringTop
+		divisorY.textContent = quantityY
+		quotientY.textContent = `= ${arithmeticMeanY.toFixed(1)}`
+	}
+}
+// Средне квадратическое отклонение
+function howCalcMeanSquareDeviationX(){
+	const dividendX = document.querySelector('[data-dividendX-second]')
+	dividendX.closest('.dividend').classList.remove('after')
+	const divisorX = document.querySelector('[data-divisorX-second]')
+	const calcResultX = document.querySelector('[data-quotientX-second]')
+
+	let sumString = '' // Строка для накопления значений
+	for (let item of inputLeft) {
+		if (!isNaN(item.value) && item.value !== '') {
+			sumString += `(${item.value} - ${arithmeticMeanX.toFixed(1)})² + `// Добавляем значение к строке
+		}
+	}
+	if (sumString.endsWith(' + ')) {
+		// Убираем последний лишний " + " из строки
+		sumString = sumString.slice(0, -3)
+	}
+	if (quantityX > 0) {
+		dividendX.classList.remove('after');
+		dividendX.textContent = sumString
+		divisorX.textContent = quantityX
+		calcResultX.textContent = `= ${arithmeticMeanX.toFixed(1)} ± ${sigmaX.toFixed(1)}`
+	}
+}
+function howCalcMeanSquareDeviationY(){
+	const dividendY = document.querySelector('[data-dividendX-third]')
+	dividendY.closest('.dividend').classList.remove('after')
+	const divisorY = document.querySelector('[data-divisorX-third]')
+	const calcResultY = document.querySelector('[data-quotientX-third]')
+
+	let sumString = '' // Строка для накопления значений
+	for (let item of inputRight) {
+		if (!isNaN(item.value) && item.value !== '') {
+			sumString += `(${item.value} - ${arithmeticMeanY.toFixed(1)})² + `// Добавляем значение к строке
+		}
+	}
+	if (sumString.endsWith(' + ')) {
+		// Убираем последний лишний " + " из строки
+		sumString = sumString.slice(0, -3)
+	}
+	if (quantityY > 0) {
+		dividendY.classList.remove('after')
+		dividendY.textContent = sumString
+		divisorY.textContent = quantityY
+		calcResultY.textContent = `= ${arithmeticMeanY.toFixed(
+			1
+		)} ± ${sigmaY.toFixed(1)}`
+	}
+}
+// Стандартное отклонение 
+function howCalcStandardDeviationX(){
+	const dividend = document.querySelector('#dividendX');
+	const divisor = document.querySelector('#divisorX')
+	const calcResult = document.querySelector('#calcResultX')
+	if (quantityX > 0) {
+		dividend.textContent = `${maxX} - ${minX}`;
+		divisor.textContent = getValueFromTableX;
+		calcResult.textContent = ` = ${resultStandardDeviationX.toFixed(1)}`;
+	}
+}
+function howCalcStandardDeviationY(){
+	const dividend = document.querySelector('#dividendY');
+	const divisor = document.querySelector('#divisorY');
+	const calcResult = document.querySelector('#calcResultY');
+	if (quantityY > 0) {
+		dividend.textContent = `${maxY} - ${minY}`
+		divisor.textContent = getValueFromTableY
+		calcResult.textContent = ` = ${resultStandardDeviationY.toFixed(1)}`
+	}
+}
+// Стандартная ошибка Ср. Ар.
+function howCalcStandardErrorX(){
+	const topLessX = document.querySelector('#topLessX');
+	const bottomLessX = document.querySelector('#bottomLessX');
+	const calcResultLessX = document.querySelector('#calcResultLessX');
+	const topMoreX = document.querySelector('#topMoreX')
+	const bottomMoreX = document.querySelector('#bottomMoreX')
+	const calcResultMoreX = document.querySelector('#calcResultMoreX')
+	if (quantityX > 0 && quantityX < 30){
+		dataLessX.classList.remove('none')
+		topLessX.textContent = resultStandardDeviationX.toFixed(1)
+		bottomLessX.textContent = `√(${quantityX} - 1)`;
+		calcResultLessX.textContent = ` = ${mX.toFixed(1)}`
+	} else if (quantityX >= 30){
+		dataMoreX.classList.remove('none')
+		topMoreX.textContent = resultStandardDeviationX.toFixed(1)
+		bottomMoreX.textContent = `√${quantityX}`
+		calcResultMoreX.textContent = ` = ${mX.toFixed(1)}`
+	}
+}
+function howCalcStandardErrorY(){
+	const topLessY = document.querySelector('#topLessY')
+	const bottomLessY = document.querySelector('#bottomLessY')
+	const calcResultLessY = document.querySelector('#calcResultLessY')
+	const topMoreY = document.querySelector('#topMoreY')
+	const bottomMoreY = document.querySelector('#bottomMoreY')
+	const calcResultMoreY = document.querySelector('#calcResultMoreY')
+	if (quantityY < 30) {
+		dataLessY.classList.remove('none')
+		topLessY.textContent = resultStandardDeviationY.toFixed(1)
+		bottomLessY.textContent = `√(${quantityY} - 1)`
+		calcResultLessY.textContent = ` = ${mY.toFixed(1)}`
+	} else if (quantityY >= 30) {
+		dataMoreY.classList.remove('none')
+		topMoreY.textContent = resultStandardDeviationY.toFixed(1)
+		bottomMoreY.textContent = `√${quantityY}`
+		calcResultMoreY.textContent = ` = ${mY.toFixed(1)}`
+	}
+}
+// t
+function howCalcMeanDifferenceError(){
+	const meanDiffTop = document.querySelector('[data-meanDiffTop]');
+	const meanDiffBottom = document.querySelector('[data-meanDiffBottom]');
+	const meanDiffResult = document.querySelector('[data-meanDiffResult]');
+	if (quantityX > 0 && quantityY > 0){
+		meanDiffTop.textContent = `${arithmeticMeanX.toFixed(1)} - ${arithmeticMeanY.toFixed(1)}`;
+		meanDiffBottom.textContent = `√(${mX.toFixed(1)} - ${mY.toFixed(1)})`
+		meanDiffResult.textContent = ` = ${finishedResult.toFixed(2)}`
+	}
+}
+// Число степеней свободы
+function howCalcDegreesOfFreedom(){
+	const fn = document.querySelector('.fn');
+	if (quantityX > 0 && quantityY > 0){
+		fn.textContent = `${quantityX} + ${quantityY} - 2 = ${f}`
+	}
+}
