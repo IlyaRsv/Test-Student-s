@@ -1,5 +1,8 @@
 // Общие классы **********************************************
 //************************************************************
+.calc-container {
+	margin: 50px 0px 0px 0px;
+}
 .grid {
 	display: grid;
 	grid-template-columns: 70px repeat(2, -webkit-max-content);
@@ -90,13 +93,13 @@ h3 {
 	max-width: -webkit-max-content;
 	max-width: -moz-max-content;
 	max-width: max-content;
-	margin: 30px auto 30px auto;
+	margin: 0px auto;
 	text-align: center;
 	font-size: clampFontSize(320, 1024, 20, 30);
 	font-weight: 700;
 	padding: 0 10px;
+	text-transform: uppercase;
 	@media (min-width: 768px) {
-		font-style: italic;
 		&::before {
 			content: '';
 			z-index: -1;
@@ -114,6 +117,20 @@ h3 {
 	text-align: center;
 	font-weight: 700;
 	margin: 20px 0;
+	line-height: normal;
+	position: relative;
+	&:nth-of-type(n + 2):nth-of-type(-n + 6) {
+		margin: 30px 0 20px 0;
+		&::before {
+			content: '';
+			position: absolute;
+			top: -5px;
+			left: -5%;
+			width: 120%;
+			height: 2px;
+			background-color: #000;
+		}
+	}
 }
 .calc-container > p:first-of-type {
 	span {

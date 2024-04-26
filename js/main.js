@@ -165,15 +165,17 @@
 				sum += value
 			}
 		}
-		sigmaX = Math.sqrt(sum / quantityX)
-		const resultSigmaX = document.querySelector('[data-sigmaX]')
-		resultSigmaX.textContent = `${arithmeticMeanX.toFixed(
-			1
-		)} ± ${sigmaX.toFixed(1)}`
-		console.log(
-			`Среднее квадратическое отклонение X = %c${sigmaX}`,
-			'color: blue'
-		)
+		if (quantityX > 0) {
+			sigmaX = Math.sqrt(sum / quantityX)
+			const resultSigmaX = document.querySelector('[data-sigmaX]')
+			resultSigmaX.textContent = `${arithmeticMeanX.toFixed(
+				1
+			)} ± ${sigmaX.toFixed(1)}`
+			console.log(
+				`Среднее квадратическое отклонение X = %c${sigmaX}`,
+				'color: blue'
+			)
+		}
 	}
 	let sigmaY
 	function calcSigmaY() {
@@ -185,16 +187,18 @@
 				sum += value
 			}
 		}
-		sigmaY = Math.sqrt(sum / quantityY)
-		const resultSigmaY = document.querySelector('[data-sigmaY]')
-		resultSigmaY.textContent = `${arithmeticMeanY.toFixed(
-			1
-		)} ± ${sigmaY.toFixed(1)}`
-		console.log(
-			`Среднее квадратическое отклонение Y = %c${sigmaY}`,
-			'color: blue'
-		)
-		console.log('====================================')
+		if(quantityY > 0) {
+			sigmaY = Math.sqrt(sum / quantityY)
+			const resultSigmaY = document.querySelector('[data-sigmaY]')
+			resultSigmaY.textContent = `${arithmeticMeanY.toFixed(
+				1
+			)} ± ${sigmaY.toFixed(1)}`
+			console.log(
+				`Среднее квадратическое отклонение Y = %c${sigmaY}`,
+				'color: blue'
+			)
+			console.log('====================================')
+		}
 	}
 	//==============================================================
 
@@ -228,7 +232,7 @@
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
 			}
 		}
-		if (numbers.length > 0) {
+		if (quantityX > 0) {
 			// Проверяем, есть ли в массиве числа
 			maxX = Math.max(...numbers) // Находим максимальное значение
 			minX = Math.min(...numbers) // Находим минимальное значение
@@ -270,7 +274,7 @@
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
 			}
 		}
-		if (numbers.length > 0) {
+		if (quantityY > 0) {
 			// Проверяем, есть ли в массиве числа
 			maxY = Math.max(...numbers) // Находим максимальное значение
 			minY = Math.min(...numbers) // Находим минимальное значение
@@ -303,9 +307,11 @@
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) X = %c${mX}`,
 				'color: blue'
-				)
-			}
-		dataErrorX.textContent = mX.toFixed(1)
+			)
+		} 
+		if (quantityX > 0 ){
+			dataErrorX.textContent = mX.toFixed(1)
+		}
 	}
 	function arithmeticMeanErrorY() {
 		if (quantityY > 0 && quantityY < 30) {
@@ -319,9 +325,11 @@
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) Y = %c${mY}`,
 				'color: blue'
-				)
-			}
-		dataErrorY.textContent = mY.toFixed(1)
+			)
+		}
+		if (quantityY > 0) {
+			dataErrorY.textContent = mY.toFixed(1)
+		}
 		console.log('====================================')
 	}
 	//==============================================================
@@ -329,15 +337,17 @@
 	// Стандартная ошибка разности (t)
 	let finishedResult
 	function averageError() {
-		ResultFirst =
-			(arithmeticMeanX - arithmeticMeanY) / Math.sqrt(mX ** 2 + mY ** 2);
-		finishedResult = Math.abs(ResultFirst);	
-		console.log(
-			`Стандартная ошибка разности (t) %c${finishedResult}`,
-			'color: blue'
-		)
-		const dataFinishResult = document.querySelector('[data-finishResult]')
-		dataFinishResult.textContent = finishedResult.toFixed(2)
+		if (quantityX > 0 && quantityY > 0) {
+			ResultFirst =
+				(arithmeticMeanX - arithmeticMeanY) / Math.sqrt(mX ** 2 + mY ** 2);
+			finishedResult = Math.abs(ResultFirst);	
+			console.log(
+				`Стандартная ошибка разности (t) %c${finishedResult}`,
+				'color: blue'
+			)
+			const dataFinishResult = document.querySelector('[data-finishResult]')
+			dataFinishResult.textContent = finishedResult.toFixed(2)
+		}
 	}
 	//==============================================================
 
@@ -348,46 +358,48 @@
 	const pMore = document.createElement('p')
 	const pLess = document.createElement('p')
 	function findP() {
-		f = quantityX + quantityY - 2
-		console.log(`Число степеней свободы = %c${f}`, 'color: blue')
-		if (f <= 30) {
-			getPFromTableP = tableP[f]
-		} else if (f > 30 && f <= 40) {
-			getPFromTableP = tableP[31]
-		} else if (f > 40 && f <= 50) {
-			getPFromTableP = tableP[32]
-		} else if (f > 50 && f <= 60) {
-			getPFromTableP = tableP[33]
-		} else if (f > 60 && f <= 80) {
-			getPFromTableP = tableP[34]
-		} else if (f > 80 && f <= 100) {
-			getPFromTableP = tableP[35]
-		} else if (f > 100 && f <= 120) {
-			getPFromTableP = tableP[36]
-		}
-		console.log(
-			`Граничное значение при 5%-ном уровне значимости (p=0,05) = %c${getPFromTableP}`,
-			'color: blue'
-		)
-		const container = document.querySelector('.container')
-		if (finishedResult > getPFromTableP) {
-			paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
-		paragraph.style.cssText =
-			'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
-		container.append(paragraph)
-		pMore.textContent = 'различия достоверны!'
-		pMore.style.cssText =
-			'text-transform: uppercase; font-weight: 700; color: green; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
-		container.append(pMore)
-		} else if (finishedResult < getPFromTableP) {
-			paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
+		if(quantityX > 0 && quantityY > 0) {
+			f = quantityX + quantityY - 2
+			console.log(`Число степеней свободы = %c${f}`, 'color: blue')
+			if (f <= 30) {
+				getPFromTableP = tableP[f]
+			} else if (f > 30 && f <= 40) {
+				getPFromTableP = tableP[31]
+			} else if (f > 40 && f <= 50) {
+				getPFromTableP = tableP[32]
+			} else if (f > 50 && f <= 60) {
+				getPFromTableP = tableP[33]
+			} else if (f > 60 && f <= 80) {
+				getPFromTableP = tableP[34]
+			} else if (f > 80 && f <= 100) {
+				getPFromTableP = tableP[35]
+			} else if (f > 100 && f <= 120) {
+				getPFromTableP = tableP[36]
+			}
+			console.log(
+				`Граничное значение при 5%-ном уровне значимости (p=0,05) = %c${getPFromTableP}`,
+				'color: blue'
+			)
+			const container = document.querySelector('.container')
+			if (finishedResult > getPFromTableP) {
+				paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
 			paragraph.style.cssText =
 				'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
 			container.append(paragraph)
-			pLess.textContent = 'различия не достоверны!'
-			pLess.style.cssText =
-				'text-transform: uppercase; font-weight: 700; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
-			container.append(pLess)
+			pMore.textContent = 'различия достоверны!'
+			pMore.style.cssText =
+				'text-transform: uppercase; font-weight: 700; color: green; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
+			container.append(pMore)
+			} else if (finishedResult < getPFromTableP) {
+				paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
+				paragraph.style.cssText =
+					'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
+				container.append(paragraph)
+				pLess.textContent = 'различия не достоверны!'
+				pLess.style.cssText =
+					'text-transform: uppercase; font-weight: 700; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
+				container.append(pLess)
+			}
 		}
 	}
 
@@ -631,7 +643,7 @@ function howCalcStandardErrorY(){
 	const topMoreY = document.querySelector('#topMoreY')
 	const bottomMoreY = document.querySelector('#bottomMoreY')
 	const calcResultMoreY = document.querySelector('#calcResultMoreY')
-	if (quantityY < 30) {
+	if (quantityY > 0 && quantityY < 30) {
 		dataLessY.classList.remove('none')
 		topLessY.textContent = resultStandardDeviationY.toFixed(1)
 		bottomLessY.textContent = `√(${quantityY} - 1)`
