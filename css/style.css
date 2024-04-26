@@ -390,7 +390,7 @@ p:nth-of-type(3) span {
 .standardDeviation__top-element #dividendX span:last-child,
 .standardDeviation__top-element #dividendY span:last-child {
   position: relative;
-  margin: 0px 30px 0px 0px;
+  margin: 0px 35px 0px 0px;
 }
 .standardDeviation__top-element #dividendXExample span:first-child::after,
 .standardDeviation__top-element #dividendXExample span:last-child::after,
@@ -400,7 +400,7 @@ p:nth-of-type(3) span {
 .standardDeviation__top-element #dividendY span:last-child::after {
   position: absolute;
   bottom: 0;
-  right: -30px;
+  right: -35px;
   font-size: calc(15 / var(--base-font-size) * 1rem);
   font-style: italic;
 }
@@ -419,7 +419,7 @@ p:nth-of-type(3) span {
 }
 
 .standardError {
-  grid-template-columns: 125px 60px repeat(2, max-content);
+  grid-template-columns: 135px 60px repeat(2, max-content);
 }
 .standardError > div:first-of-type {
   grid-row: 1/-1;
