@@ -349,10 +349,10 @@
 		}
 		if (quantityY > 1) {
 			dataErrorY.textContent = mY.toFixed(1)
+			console.log('====================================')
 		} else {
 			dataErrorY.textContent = ''
 		}
-		console.log('====================================')
 	}
 	//==============================================================
 
@@ -500,8 +500,8 @@
 		dataLessY.classList.add('none')
 		dataMoreX.classList.add('none')
 		dataMoreY.classList.add('none')
-		resetResultAllY();
 		resetResultAllX();
+		resetResultAllY();
 	}
 
 	// НОВОЕ************************************
@@ -527,10 +527,10 @@ function calc() {
 	howCalcStandardErrorY()
 	howCalcMeanDifferenceError()
 	howCalcDegreesOfFreedom()
-	if (quantityX === 0) {
+	if (quantityX == 0) {
 		resetResultAllX();
 	}
-	if (quantityY === 0) {
+	if (quantityY == 0) {
 		resetResultAllY();
 	}
 }
@@ -746,66 +746,19 @@ function howCalcDegreesOfFreedom(){
 }
 
 // Функция очистки значений в делимом - делителе - частном для первого столбца
-function resetResultAllY (){
-	// Среднее арифметическое
-	dividendY1.textContent = ''
-	divisorY1.textContent = ''
-	quotientY1.textContent = ''
-
-	// Средне квадратическое отклонение
-	dividendY2.textContent = ''
-	divisorY2.textContent = ''
-	calcResultY2.textContent = ''
-
-	// Стандартное отклонение
-	dividendY3.textContent = ''
-	divisorY3.textContent = ''
-	calcResultY3.textContent = ''
-
-	// Стандартная ошибка Ср. Ар.
-	topLessY.textContent = ''
-	bottomLessY.textContent = ''
-	calcResultLessY.textContent = ''
-	topMoreY.textContent = ''
-	bottomMoreY.textContent = ''
-	calcResultMoreY.textContent = ''
-
-	// t коэффициент
-	meanDiffTop.textContent = ''
-	meanDiffBottom.textContent = ''
-	meanDiffResult.textContent = ''
-
-	// Число степеней свободы
-	fn.textContent = '';
+function resetResultAllX (){
+	let arrWithVarX = [
+		dividendX1, divisorX1, quotientX1, dividendX2, divisorX2, calcResultX2, dividendX3, divisorX3, calcResultX3, topLessX, bottomLessX, calcResultLessX, topMoreX, bottomMoreX, calcResultMoreX, meanDiffTop, meanDiffBottom, meanDiffResult, fn
+	]
+	arrWithVarX.forEach((item) => {
+		item.textContent = ''
+	})
 }
-// Функция очистки значений в делимом - делителе - частном для второго столбца
-function resetResultAllX() {
-	// Среднее арифметическое
-	dividendX1.textContent = ''
-	divisorX1.textContent = ''
-	quotientX1.textContent = ''
-	// Средне квадратическое отклонение
-	dividendX2.textContent = ''
-	divisorX2.textContent = ''
-	calcResultX2.textContent = ''
-	// Стандартное отклонение
-	dividendX3.textContent = ''
-	divisorX3.textContent = ''
-	calcResultX3.textContent = ''
-
-	// Стандартная ошибка Ср. Ар.
-	topLessX.textContent = ''
-	bottomLessX.textContent = ''
-	calcResultLessX.textContent = ''
-	topMoreX.textContent = ''
-	bottomMoreX.textContent = ''
-	calcResultMoreX.textContent = ''
-
-	// t коэффициент
-	meanDiffTop.textContent = ''
-	meanDiffBottom.textContent = ''
-	meanDiffResult.textContent = ''
-
-	// Число степеней свободы
-	fn.textContent = ''
+function resetResultAllY (){
+	let arrWithVarY = [
+		dividendY1, divisorY1, quotientY1, dividendY2, divisorY2, calcResultY2, dividendY3, divisorY3,calcResultY3, topLessY, bottomLessY, calcResultLessY, topMoreY, bottomMoreY, calcResultMoreY, meanDiffTop, meanDiffBottom, meanDiffResult, fn
+	]
+	arrWithVarY.forEach((item) => {
+		item.textContent = ''
+	})
 }
