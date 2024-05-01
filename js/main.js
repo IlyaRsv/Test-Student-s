@@ -129,6 +129,8 @@
 				'color: blue'
 			)
 			resultX.textContent = arithmeticMeanX.toFixed(1) // Округляем до ближайшего десятого и до первого числа после запятой
+		} else {
+			resultX.textContent = ''
 		}
 	}
 	function calcAverageY() {
@@ -150,6 +152,8 @@
 			)
 			console.log('====================================')
 			resultY.textContent = arithmeticMeanY.toFixed(1) // Округляем до ближайшего десятого и до первого числа после запятой
+		} else {
+			resultY.textContent = ''
 		}
 	}
 	//==============================================================
@@ -165,9 +169,9 @@
 				sum += value
 			}
 		}
+		const resultSigmaX = document.querySelector('[data-sigmaX]')
 		if (quantityX > 0) {
 			sigmaX = Math.sqrt(sum / quantityX)
-			const resultSigmaX = document.querySelector('[data-sigmaX]')
 			resultSigmaX.textContent = `${arithmeticMeanX.toFixed(
 				1
 			)} ± ${sigmaX.toFixed(1)}`
@@ -175,6 +179,8 @@
 				`Среднее квадратическое отклонение X = %c${sigmaX}`,
 				'color: blue'
 			)
+		} else {
+			resultSigmaX.textContent = ''
 		}
 	}
 	let sigmaY
@@ -187,9 +193,9 @@
 				sum += value
 			}
 		}
+		const resultSigmaY = document.querySelector('[data-sigmaY]')
 		if(quantityY > 0) {
 			sigmaY = Math.sqrt(sum / quantityY)
-			const resultSigmaY = document.querySelector('[data-sigmaY]')
 			resultSigmaY.textContent = `${arithmeticMeanY.toFixed(
 				1
 			)} ± ${sigmaY.toFixed(1)}`
@@ -198,6 +204,8 @@
 				'color: blue'
 			)
 			console.log('====================================')
+		} else {
+			resultSigmaY.textContent = ''
 		}
 	}
 	//==============================================================
@@ -212,16 +220,18 @@
 		let firstDigit
 		let secondDigit
 
-		if (quantityX <= 9) {
+		if (quantityX > 1 && quantityX <= 9) {
 			getValueFromTableX = table[0][quantityX]
 		} else if (quantityX <= 99) {
-			firstDigit = parseInt(quantityX.toString()[0], 10);
-			secondDigit = parseInt(quantityX.toString()[1], 10);
-			getValueFromTableX = table[firstDigit][secondDigit];
-		} else if (quantityX > 99 && quantityX <= 119){
-			firstDigit = parseInt(quantityX.toString().substring(0, 2), 10);
-			secondDigit = parseInt(quantityX.toString()[1], 10);
-			getValueFromTableX = table[firstDigit][secondDigit];
+			firstDigit = parseInt(quantityX.toString()[0], 10)
+			secondDigit = parseInt(quantityX.toString()[1], 10)
+			getValueFromTableX = table[firstDigit][secondDigit]
+		} else if (quantityX > 99 && quantityX <= 119) {
+			firstDigit = parseInt(quantityX.toString().substring(0, 2), 10)
+			secondDigit = parseInt(quantityX.toString()[1], 10)
+			getValueFromTableX = table[firstDigit][secondDigit]
+		} else {
+			getValueFromTableX = '';
 		}
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
@@ -232,7 +242,10 @@
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
 			}
 		}
-		if (quantityX > 0) {
+		const standardDeviationX = document.querySelector(
+			'[data-standardDeviationX]'
+		)
+		if (quantityX > 1) {
 			// Проверяем, есть ли в массиве числа
 			maxX = Math.max(...numbers) // Находим максимальное значение
 			minX = Math.min(...numbers) // Находим минимальное значение
@@ -241,10 +254,10 @@
 				`Стандартное отклонение X = %c${resultStandardDeviationX}`,
 				'color: blue'
 			)
-			const standardDeviationX = document.querySelector(
-				'[data-standardDeviationX]'
-			)
 			standardDeviationX.textContent = resultStandardDeviationX.toFixed(1)
+		} else {
+			standardDeviationX.textContent = '';
+			resultStandardDeviationX = '';
 		}
 	}
 	let maxY
@@ -254,16 +267,18 @@
 		let firstDigit;
 		let secondDigit;
 
-		if (quantityY <= 9) {
+		if (quantityY > 1 && quantityY <= 9) {
 			getValueFromTableY = table[0][quantityY]
 		} else if (quantityY <= 99) {
-			firstDigit = parseInt(quantityY.toString()[0], 10);
-			secondDigit = parseInt(quantityY.toString()[1], 10);
-			getValueFromTableY = table[firstDigit][secondDigit];
-		} else if (quantityY > 99 && quantityY <=119){
-			firstDigit = parseInt(quantityY.toString().substring(0, 2), 10);
-			secondDigit = parseInt(quantityY.toString()[2], 10);
-			getValueFromTableY = table[firstDigit][secondDigit];
+			firstDigit = parseInt(quantityY.toString()[0], 10)
+			secondDigit = parseInt(quantityY.toString()[1], 10)
+			getValueFromTableY = table[firstDigit][secondDigit]
+		} else if (quantityY > 99 && quantityY <= 119) {
+			firstDigit = parseInt(quantityY.toString().substring(0, 2), 10)
+			secondDigit = parseInt(quantityY.toString()[2], 10)
+			getValueFromTableY = table[firstDigit][secondDigit]
+		} else {
+			getValueFromTableY = '';
 		}
 		//*******************************************************************
 		let numbers = [] // Массив для хранения числовых значений инпутов
@@ -274,7 +289,10 @@
 				numbers.push(value) // Добавляем значение в массив, если оно является числом
 			}
 		}
-		if (quantityY > 0) {
+		const standardDeviationY = document.querySelector(
+			'[data-standardDeviationY]'
+		)
+		if (quantityY > 1) {
 			// Проверяем, есть ли в массиве числа
 			maxY = Math.max(...numbers) // Находим максимальное значение
 			minY = Math.min(...numbers) // Находим минимальное значение
@@ -284,10 +302,10 @@
 				'color: blue'
 			)
 			console.log('====================================')
-			const standardDeviationY = document.querySelector(
-				'[data-standardDeviationY]'
-			)
 			standardDeviationY.textContent = resultStandardDeviationY.toFixed(1)
+		} else {
+			standardDeviationY.textContent = '';
+			resultStandardDeviationY = '';
 		}
 	}
 	//==============================================================
@@ -296,7 +314,7 @@
 	let mX
 	let mY
 	function arithmeticMeanErrorX() {
-		if (quantityX > 0 && quantityX < 30) {
+		if (quantityX > 1 && quantityX < 30) {
 			mX = resultStandardDeviationX / Math.sqrt(quantityX - 1)
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) X = %c${mX}`,
@@ -309,12 +327,14 @@
 				'color: blue'
 			)
 		} 
-		if (quantityX > 0 ){
+		if (quantityX > 1 ){
 			dataErrorX.textContent = mX.toFixed(1)
+		} else {
+			dataErrorX.textContent = ''
 		}
 	}
 	function arithmeticMeanErrorY() {
-		if (quantityY > 0 && quantityY < 30) {
+		if (quantityY > 1 && quantityY < 30) {
 			mY = resultStandardDeviationY / Math.sqrt(quantityY - 1)
 			console.log(
 				`Стандартная ошибка среднего арифметического значения (m) Y = %c${mY}`,
@@ -327,8 +347,10 @@
 				'color: blue'
 			)
 		}
-		if (quantityY > 0) {
+		if (quantityY > 1) {
 			dataErrorY.textContent = mY.toFixed(1)
+		} else {
+			dataErrorY.textContent = ''
 		}
 		console.log('====================================')
 	}
@@ -337,7 +359,8 @@
 	// Стандартная ошибка разности (t)
 	let finishedResult
 	function averageError() {
-		if (quantityX > 0 && quantityY > 0) {
+		const dataFinishResult = document.querySelector('[data-finishResult]')
+		if (quantityX > 1 && quantityY > 1) {
 			ResultFirst =
 				(arithmeticMeanX - arithmeticMeanY) / Math.sqrt(mX ** 2 + mY ** 2);
 			finishedResult = Math.abs(ResultFirst);	
@@ -345,8 +368,9 @@
 				`Стандартная ошибка разности (t) %c${finishedResult}`,
 				'color: blue'
 			)
-			const dataFinishResult = document.querySelector('[data-finishResult]')
 			dataFinishResult.textContent = finishedResult.toFixed(2)
+		} else {
+			dataFinishResult.textContent = ''
 		}
 	}
 	//==============================================================
@@ -358,7 +382,7 @@
 	const pMore = document.createElement('p')
 	const pLess = document.createElement('p')
 	function findP() {
-		if(quantityX > 0 && quantityY > 0) {
+		if(quantityX > 1 && quantityY > 1) {
 			f = quantityX + quantityY - 2
 			console.log(`Число степеней свободы = %c${f}`, 'color: blue')
 			if (f <= 30) {
@@ -383,13 +407,13 @@
 			const container = document.querySelector('.container')
 			if (finishedResult > getPFromTableP) {
 				paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
-			paragraph.style.cssText =
-				'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
-			container.append(paragraph)
-			pMore.textContent = 'различия достоверны!'
-			pMore.style.cssText =
-				'text-transform: uppercase; font-weight: 700; color: green; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
-			container.append(pMore)
+				paragraph.style.cssText =
+					'font-size: 1.5rem; font-weight: 700; text-align: center; margin-top: 20px; color: #fff; text-shadow: 0 0 5px #000'
+				container.append(paragraph)
+				pMore.textContent = 'различия достоверны!'
+				pMore.style.cssText =
+					'text-transform: uppercase; font-weight: 700; color: green; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
+				container.append(pMore)
 			} else if (finishedResult < getPFromTableP) {
 				paragraph.textContent = `Граничное значение (при p = 0,05) = ${getPFromTableP}`
 				paragraph.style.cssText =
@@ -399,6 +423,10 @@
 				pLess.style.cssText =
 					'text-transform: uppercase; font-weight: 700; color: red; text-shadow: none; text-align: center; font-size: 1.5rem; margin-top: 10px'
 				container.append(pLess)
+			} else {
+				paragraph.textContent = '';
+				pLess.textContent = '';
+				pMore.textContent =  '';
 			}
 		}
 	}
@@ -422,7 +450,8 @@
 	//==============================================================
 
 	// Прослушка событий для кнопки ОЧИСТИТЬ 
-	document.querySelector('[type="reset"]').addEventListener('click', reset) 
+	const resetBtn = document.querySelector('[type="reset"]')
+	resetBtn.addEventListener('click', reset) 
 	function reset (){
 		// Функция (анонимная) внутри функции заключается в скобки, затем объявляется немедленный вызов ();
 		;(function () {
@@ -471,6 +500,8 @@
 		dataLessY.classList.add('none')
 		dataMoreX.classList.add('none')
 		dataMoreY.classList.add('none')
+		resetResultAllY();
+		resetResultAllX();
 	}
 
 	// НОВОЕ************************************
@@ -496,6 +527,12 @@ function calc() {
 	howCalcStandardErrorY()
 	howCalcMeanDifferenceError()
 	howCalcDegreesOfFreedom()
+	if (quantityX === 0) {
+		resetResultAllX();
+	}
+	if (quantityY === 0) {
+		resetResultAllY();
+	}
 }
 //------------------------------------------
 function removeClassNone() {
@@ -504,10 +541,10 @@ function removeClassNone() {
 	})
 }
 // Среднее арифметическое
+let dividendX1 = document.querySelector('[data-dividendX]')
+let divisorX1 = document.querySelector('[data-divisorX]')
+let quotientX1 = document.querySelector('[data-quotientX]')
 function howCalcArithmeticMeanX() {
-	let dividendX = document.querySelector('[data-dividendX]')
-	let divisorX = document.querySelector('[data-divisorX]')
-	let quotientX = document.querySelector('[data-quotientX]')
 	let sumStringTop = '' // Строка для накопления значений
 	for (let item of inputLeft) {
 		if (!isNaN(item.value) && item.value !== '') {
@@ -520,15 +557,15 @@ function howCalcArithmeticMeanX() {
 		sumStringTop = sumStringTop.slice(0, -3)
 	}
 	if (quantityX > 0) {
-		dividendX.textContent = sumStringTop
-		divisorX.textContent = quantityX
-		quotientX.textContent = `= ${arithmeticMeanX.toFixed(1)}`
+		dividendX1.textContent = sumStringTop
+		divisorX1.textContent = quantityX
+		quotientX1.textContent = `= ${arithmeticMeanX.toFixed(1)}`
 	}
 }
+let dividendY1 = document.querySelector('[data-dividendY]')
+let divisorY1 = document.querySelector('[data-divisorY]')
+let quotientY1 = document.querySelector('[data-quotientY]')
 function howCalcArithmeticMeanY() {
-	let dividendY = document.querySelector('[data-dividendY]')
-	let divisorY = document.querySelector('[data-divisorY]')
-	let quotientY = document.querySelector('[data-quotientY]')
 	let sumStringTop = '' // Строка для накопления значений
 	for (let item of inputRight) {
 		if (!isNaN(item.value) && item.value !== '') {
@@ -541,17 +578,17 @@ function howCalcArithmeticMeanY() {
 		sumStringTop = sumStringTop.slice(0, -3)
 	}
 	if (quantityY > 0) {
-		dividendY.textContent = sumStringTop
-		divisorY.textContent = quantityY
-		quotientY.textContent = `= ${arithmeticMeanY.toFixed(1)}`
+		dividendY1.textContent = sumStringTop
+		divisorY1.textContent = quantityY
+		quotientY1.textContent = `= ${arithmeticMeanY.toFixed(1)}`
 	}
 }
 // Средне квадратическое отклонение
+let dividendX2 = document.querySelector('[data-dividendX-second]')
+let divisorX2 = document.querySelector('[data-divisorX-second]')
+let calcResultX2 = document.querySelector('[data-quotientX-second]')
 function howCalcMeanSquareDeviationX(){
-	const dividendX = document.querySelector('[data-dividendX-second]')
-	dividendX.closest('.dividend').classList.remove('after')
-	const divisorX = document.querySelector('[data-divisorX-second]')
-	const calcResultX = document.querySelector('[data-quotientX-second]')
+	dividendX2.closest('.dividend').classList.remove('after')
 
 	let sumString = '' // Строка для накопления значений
 	for (let item of inputLeft) {
@@ -564,17 +601,17 @@ function howCalcMeanSquareDeviationX(){
 		sumString = sumString.slice(0, -3)
 	}
 	if (quantityX > 0) {
-		dividendX.classList.remove('after');
-		dividendX.textContent = sumString
-		divisorX.textContent = quantityX
-		calcResultX.textContent = `= ${arithmeticMeanX.toFixed(1)} ± ${sigmaX.toFixed(1)}`
+		dividendX2.classList.remove('after'); // Удаление степени
+		dividendX2.textContent = sumString
+		divisorX2.textContent = quantityX
+		calcResultX2.textContent = `= ${arithmeticMeanX.toFixed(1)} ± ${sigmaX.toFixed(1)}`
 	}
 }
+let dividendY2 = document.querySelector('[data-dividendY-second]')
+let divisorY2 = document.querySelector('[data-divisorY-second]')
+let calcResultY2 = document.querySelector('[data-quotientY-second]')
 function howCalcMeanSquareDeviationY(){
-	const dividendY = document.querySelector('[data-dividendX-third]')
-	dividendY.closest('.dividend').classList.remove('after')
-	const divisorY = document.querySelector('[data-divisorX-third]')
-	const calcResultY = document.querySelector('[data-quotientX-third]')
+	dividendY2.closest('.dividend').classList.remove('after')
 
 	let sumString = '' // Строка для накопления значений
 	for (let item of inputRight) {
@@ -587,44 +624,52 @@ function howCalcMeanSquareDeviationY(){
 		sumString = sumString.slice(0, -3)
 	}
 	if (quantityY > 0) {
-		dividendY.classList.remove('after')
-		dividendY.textContent = sumString
-		divisorY.textContent = quantityY
-		calcResultY.textContent = `= ${arithmeticMeanY.toFixed(
+		dividendY2.classList.remove('after')
+		dividendY2.textContent = sumString
+		divisorY2.textContent = quantityY
+		calcResultY2.textContent = `= ${arithmeticMeanY.toFixed(
 			1
 		)} ± ${sigmaY.toFixed(1)}`
 	}
 }
 // Стандартное отклонение 
+let dividendX3 = document.querySelector('#dividendX');
+let divisorX3 = document.querySelector('#divisorX')
+let calcResultX3 = document.querySelector('#calcResultX')
 function howCalcStandardDeviationX(){
-	const dividend = document.querySelector('#dividendX');
-	const divisor = document.querySelector('#divisorX')
-	const calcResult = document.querySelector('#calcResultX')
-	if (quantityX > 0) {
-		dividend.textContent = `${maxX} - ${minX}`;
-		divisor.textContent = getValueFromTableX;
-		calcResult.textContent = ` = ${resultStandardDeviationX.toFixed(1)}`;
+	if (quantityX > 1) {
+		dividendX3.textContent = `${maxX} - ${minX}`;
+		divisorX3.textContent = getValueFromTableX;
+		calcResultX3.textContent = ` = ${resultStandardDeviationX.toFixed(1)}`;
+	} else {
+		dividendX3.textContent = '';
+		divisorX3.textContent = '';
+		calcResultX3.textContent = '';
 	}
 }
+let dividendY3 = document.querySelector('#dividendY');
+let divisorY3 = document.querySelector('#divisorY');
+let calcResultY3 = document.querySelector('#calcResultY');
 function howCalcStandardDeviationY(){
-	const dividend = document.querySelector('#dividendY');
-	const divisor = document.querySelector('#divisorY');
-	const calcResult = document.querySelector('#calcResultY');
-	if (quantityY > 0) {
-		dividend.textContent = `${maxY} - ${minY}`
-		divisor.textContent = getValueFromTableY
-		calcResult.textContent = ` = ${resultStandardDeviationY.toFixed(1)}`
+	if (quantityY > 1) {
+		dividendY3.textContent = `${maxY} - ${minY}`
+		divisorY3.textContent = getValueFromTableY
+		calcResultY3.textContent = ` = ${resultStandardDeviationY.toFixed(1)}`
+	} else {
+		dividendY3.textContent = '';
+		divisorY3.textContent = '';
+		calcResultY3.textContent = '';
 	}
 }
 // Стандартная ошибка Ср. Ар.
+let topLessX = document.querySelector('#topLessX');
+let bottomLessX = document.querySelector('#bottomLessX');
+let calcResultLessX = document.querySelector('#calcResultLessX');
+let topMoreX = document.querySelector('#topMoreX')
+let bottomMoreX = document.querySelector('#bottomMoreX')
+let calcResultMoreX = document.querySelector('#calcResultMoreX')
 function howCalcStandardErrorX(){
-	const topLessX = document.querySelector('#topLessX');
-	const bottomLessX = document.querySelector('#bottomLessX');
-	const calcResultLessX = document.querySelector('#calcResultLessX');
-	const topMoreX = document.querySelector('#topMoreX')
-	const bottomMoreX = document.querySelector('#bottomMoreX')
-	const calcResultMoreX = document.querySelector('#calcResultMoreX')
-	if (quantityX > 0 && quantityX < 30){
+	if (quantityX > 1 && quantityX < 30){
 		dataLessX.classList.remove('none')
 		topLessX.textContent = resultStandardDeviationX.toFixed(1)
 		bottomLessX.textContent = `√(${quantityX} - 1)`;
@@ -634,16 +679,26 @@ function howCalcStandardErrorX(){
 		topMoreX.textContent = resultStandardDeviationX.toFixed(1)
 		bottomMoreX.textContent = `√${quantityX}`
 		calcResultMoreX.textContent = ` = ${mX.toFixed(1)}`
+	} else {
+		dataLessX.classList.add('none')
+		topLessX.textContent.textContent = '';
+		bottomLessX.textContent.textContent = '';
+		calcResultLessX.textContent.textContent = '';
+
+		dataMoreX.classList.add('none')
+		topMoreX.textContent.textContent = '';
+		bottomMoreX.textContent.textContent = '';
+		calcResultMoreX.textContent.textContent = '';
 	}
 }
+let topLessY = document.querySelector('#topLessY')
+let bottomLessY = document.querySelector('#bottomLessY')
+let calcResultLessY = document.querySelector('#calcResultLessY')
+let topMoreY = document.querySelector('#topMoreY')
+let bottomMoreY = document.querySelector('#bottomMoreY')
+let calcResultMoreY = document.querySelector('#calcResultMoreY')
 function howCalcStandardErrorY(){
-	const topLessY = document.querySelector('#topLessY')
-	const bottomLessY = document.querySelector('#bottomLessY')
-	const calcResultLessY = document.querySelector('#calcResultLessY')
-	const topMoreY = document.querySelector('#topMoreY')
-	const bottomMoreY = document.querySelector('#bottomMoreY')
-	const calcResultMoreY = document.querySelector('#calcResultMoreY')
-	if (quantityY > 0 && quantityY < 30) {
+	if (quantityY > 1 && quantityY < 30) {
 		dataLessY.classList.remove('none')
 		topLessY.textContent = resultStandardDeviationY.toFixed(1)
 		bottomLessY.textContent = `√(${quantityY} - 1)`
@@ -653,23 +708,104 @@ function howCalcStandardErrorY(){
 		topMoreY.textContent = resultStandardDeviationY.toFixed(1)
 		bottomMoreY.textContent = `√${quantityY}`
 		calcResultMoreY.textContent = ` = ${mY.toFixed(1)}`
+	} else {
+		dataLessY.classList.add('none')
+		topLessY.textContent.textContent = ''
+		bottomLessY.textContent.textContent = ''
+		calcResultLessY.textContent.textContent = ''
+
+		dataMoreY.classList.add('none')
+		topMoreY.textContent.textContent = ''
+		bottomMoreY.textContent.textContent = ''
+		calcResultMoreY.textContent.textContent = ''
 	}
 }
-// t
+// t коэффициент
+let meanDiffTop = document.querySelector('[data-meanDiffTop]');
+let meanDiffBottom = document.querySelector('[data-meanDiffBottom]');
+let meanDiffResult = document.querySelector('[data-meanDiffResult]');
 function howCalcMeanDifferenceError(){
-	const meanDiffTop = document.querySelector('[data-meanDiffTop]');
-	const meanDiffBottom = document.querySelector('[data-meanDiffBottom]');
-	const meanDiffResult = document.querySelector('[data-meanDiffResult]');
-	if (quantityX > 0 && quantityY > 0){
+	if (quantityX > 1 && quantityY > 1){
 		meanDiffTop.textContent = `${arithmeticMeanX.toFixed(1)} - ${arithmeticMeanY.toFixed(1)}`;
 		meanDiffBottom.textContent = `√(${mX.toFixed(1)} - ${mY.toFixed(1)})`
 		meanDiffResult.textContent = ` = ${finishedResult.toFixed(2)}`
+	} else {
+		meanDiffTop.textContent = '';
+		meanDiffBottom.textContent = '';
+		meanDiffResult.textContent = '';
 	}
 }
 // Число степеней свободы
+let fn = document.querySelector('.fn');
 function howCalcDegreesOfFreedom(){
-	const fn = document.querySelector('.fn');
-	if (quantityX > 0 && quantityY > 0){
+	if (quantityX > 1 && quantityY > 1){
 		fn.textContent = `${quantityX} + ${quantityY} - 2 = ${f}`
+	} else {
+		fn.textContent = '';
 	}
+}
+
+// Функция очистки значений в делимом - делителе - частном для первого столбца
+function resetResultAllY (){
+	// Среднее арифметическое
+	dividendY1.textContent = ''
+	divisorY1.textContent = ''
+	quotientY1.textContent = ''
+
+	// Средне квадратическое отклонение
+	dividendY2.textContent = ''
+	divisorY2.textContent = ''
+	calcResultY2.textContent = ''
+
+	// Стандартное отклонение
+	dividendY3.textContent = ''
+	divisorY3.textContent = ''
+	calcResultY3.textContent = ''
+
+	// Стандартная ошибка Ср. Ар.
+	topLessY.textContent = ''
+	bottomLessY.textContent = ''
+	calcResultLessY.textContent = ''
+	topMoreY.textContent = ''
+	bottomMoreY.textContent = ''
+	calcResultMoreY.textContent = ''
+
+	// t коэффициент
+	meanDiffTop.textContent = ''
+	meanDiffBottom.textContent = ''
+	meanDiffResult.textContent = ''
+
+	// Число степеней свободы
+	fn.textContent = '';
+}
+// Функция очистки значений в делимом - делителе - частном для второго столбца
+function resetResultAllX() {
+	// Среднее арифметическое
+	dividendX1.textContent = ''
+	divisorX1.textContent = ''
+	quotientX1.textContent = ''
+	// Средне квадратическое отклонение
+	dividendX2.textContent = ''
+	divisorX2.textContent = ''
+	calcResultX2.textContent = ''
+	// Стандартное отклонение
+	dividendX3.textContent = ''
+	divisorX3.textContent = ''
+	calcResultX3.textContent = ''
+
+	// Стандартная ошибка Ср. Ар.
+	topLessX.textContent = ''
+	bottomLessX.textContent = ''
+	calcResultLessX.textContent = ''
+	topMoreX.textContent = ''
+	bottomMoreX.textContent = ''
+	calcResultMoreX.textContent = ''
+
+	// t коэффициент
+	meanDiffTop.textContent = ''
+	meanDiffBottom.textContent = ''
+	meanDiffResult.textContent = ''
+
+	// Число степеней свободы
+	fn.textContent = ''
 }
