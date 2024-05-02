@@ -52,7 +52,7 @@ h1 {
 			display: block;
 			text-align: center;
 			text-transform: uppercase;
-			font-size: pxRem(30);
+			font-size: 26.25px;
 			font-weight: 700;
 		}
 		input[type='text'] {
@@ -77,8 +77,8 @@ h1 {
 	}
 	h2 {
 		text-align: center;
-		font-size: pxRem(20.5);
-		letter-spacing: pxRem(2);
+		font-size: 18px;
+		letter-spacing: 1.75px;
 		line-height: 1.5rem;
 		font-weight: 700;
 		text-transform: lowercase;
@@ -107,7 +107,7 @@ h1 {
 					top: -50%;
 					left: 50%;
 					transform: translateX(-50%);
-					font-size: pxRem(20);
+					font-size: 17.5px;
 				}
 				&:first-child::before {
 					content: 'X';
@@ -129,8 +129,8 @@ h1 {
 		background-color: #1e90ff;
 		color: #fff;
 		text-transform: uppercase;
-		font-size: pxRem(20);
-		letter-spacing: pxRem(2);
+		font-size: 17.5px;
+		letter-spacing: 1.75px;
 		font-weight: 700;
 		text-align: center;
 		border-radius: 15px;
@@ -149,12 +149,19 @@ h1 {
 			@media (min-width: 641px) {
 				position: absolute;
 				bottom: 0;
-				left: 78.5%;
+				left: 72.5%;
 			}
 		}
 	}
 	button[data-btn] {
-		width: 100%;
+		display: inline-block;
+		margin-bottom: 0 !important;
+		margin-top: 0 !important;
+		padding: 0;
+		width: 120px;
+	}
+	#btn10 {
+		margin-left: 6px;
 	}
 	.result {
 		min-width: 110px;

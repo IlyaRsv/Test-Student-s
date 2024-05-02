@@ -9,9 +9,11 @@
 	const formInnerRight = document.querySelector('.form-inner__right')
 	// Открытие клавиатуры на смартфонах для ввода чисел
 	const inputsText = document.getElementsByTagName('input');
-	if (!('ontouchstart' in window || navigator.maxTouchPoints)){
-		inputsText[0].focus()
-	} 
+	document.addEventListener('DOMContentLoaded', function(){
+		if (!('ontouchstart' in window || navigator.maxTouchPoints)){
+			inputsText[0].focus()
+		} 
+	})
 		
 	for (let item of inputsText){
 			// Добавляем атрибут inputmode ко всем тегам input
@@ -439,14 +441,24 @@
 		event.preventDefault()
 		addInputs()
 	})
+	let addInputLeft =
+		'<input class="input-left" inputmode="decimal" type="text"/>';
+	let addInputRight =
+		'<input class="input-right" inputmode="decimal" type="text"/>';
 	function addInputs() {
-		let inputLeft =
-			'<input class="input-left" inputmode="decimal" type="text"/>'
-		let inputRight =
-			'<input class="input-right" inputmode="decimal" type="text"/>'
-		formInnerLeft.insertAdjacentHTML('beforeend', inputLeft)
-		formInnerRight.insertAdjacentHTML('beforeend', inputRight)
+		for(let i = 0; i < 5; i++){
+			formInnerLeft.insertAdjacentHTML('beforeend', addInputLeft)
+			formInnerRight.insertAdjacentHTML('beforeend', addInputRight)
+		}
 	}
+	const btnAddTen = document.querySelector('#btn10');
+	btnAddTen.addEventListener('click', function(event){
+		event.preventDefault();
+		for (let i = 0; i < 10; i++) {
+			formInnerLeft.insertAdjacentHTML('beforeend', addInputLeft)
+			formInnerRight.insertAdjacentHTML('beforeend', addInputRight)
+		}
+	})
 	//==============================================================
 
 	// Прослушка событий для кнопки ОЧИСТИТЬ 

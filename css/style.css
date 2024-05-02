@@ -101,13 +101,13 @@ body {
 .firstP {
   grid-row: 1/-1;
   align-self: center;
-  font-size: calc(30 / var(--base-font-size) * 1rem);
+  font-size: 26.25px;
   font-weight: 700;
 }
 
 .dividend {
   font-weight: 700;
-  font-size: calc(20 / var(--base-font-size) * 1rem);
+  font-size: 17.5px;
   grid-column: 2/3;
 }
 .dividend div {
@@ -118,7 +118,7 @@ body {
 
 .divisor {
   margin: 5px auto;
-  font-size: calc(20 / var(--base-font-size) * 1rem);
+  font-size: 17.5px;
   grid-column: 2/3;
   grid-row: 2/3;
   font-weight: 700;
@@ -240,7 +240,7 @@ h3 {
 
 .calc-container > p:nth-of-type(2) span,
 p:nth-of-type(3) span {
-  font-size: calc(30 / var(--base-font-size) * 1rem);
+  font-size: 26.25px;
   font-weight: 400;
 }
 
@@ -260,21 +260,21 @@ p:nth-of-type(3) span {
 }
 .averageGrid p:first-of-type .spanX::after {
   content: "X";
-  font-size: calc(15 / var(--base-font-size) * 1rem);
+  font-size: 13.125px;
   position: absolute;
   bottom: 0;
   right: -10px;
 }
 .averageGrid p:first-of-type .spanY::after {
   content: "Y";
-  font-size: calc(15 / var(--base-font-size) * 1rem);
+  font-size: 13.125px;
   position: absolute;
   bottom: 0;
   right: -10px;
 }
 .averageGrid .top-element div span {
   margin-right: 5px;
-  font-size: calc(30 / var(--base-font-size) * 1rem);
+  font-size: 26.25px;
 }
 
 .sigmaGrid {
@@ -283,7 +283,7 @@ p:nth-of-type(3) span {
 .sigmaGrid > div:first-of-type {
   grid-row: 1/-1;
   align-self: center;
-  font-size: calc(30 / var(--base-font-size) * 1rem);
+  font-size: 26.25px;
   font-weight: 700;
 }
 .sigmaGrid .p {
@@ -307,7 +307,7 @@ p:nth-of-type(3) span {
 }
 .sigmaGrid__top-element div span:first-child {
   margin-right: 5px;
-  font-size: calc(30 / var(--base-font-size) * 1rem);
+  font-size: 26.25px;
 }
 .sigmaGrid__top-element #averageX,
 .sigmaGrid__top-element #averageY {
@@ -319,7 +319,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: -3px;
   right: -10px;
-  font-size: calc(10px / var(--base-font-size) * 1rem);
+  font-size: 8.75px;
 }
 .sigmaGrid__top-element #averageX::before,
 .sigmaGrid__top-element #averageY::before {
@@ -342,7 +342,7 @@ p:nth-of-type(3) span {
   position: absolute;
   top: 0;
   right: -10px;
-  font-size: calc(15 / var(--base-font-size) * 1rem);
+  font-size: 13.125px;
 }
 .sigmaGrid__bottom-element {
   grid-column: 3/4;
@@ -360,7 +360,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: 0;
   right: -10px;
-  font-size: calc(15 / var(--base-font-size) * 1rem);
+  font-size: 13.125px;
 }
 .sigmaGrid #sigmaX::after {
   content: "X";
@@ -378,7 +378,7 @@ p:nth-of-type(3) span {
   position: absolute;
   top: 0;
   right: -7px;
-  font-size: calc(14 / var(--base-font-size) * 1rem);
+  font-size: 12.25px;
 }
 
 .standardDeviation .x,
@@ -391,7 +391,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: 0;
   right: -10px;
-  font-size: calc(15 / var(--base-font-size) * 1rem);
+  font-size: 13.125px;
 }
 .standardDeviation .x::after {
   content: "X";
@@ -417,7 +417,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: 0;
   right: -35px;
-  font-size: calc(15 / var(--base-font-size) * 1rem);
+  font-size: 13.125px;
   font-style: italic;
 }
 .standardDeviation__top-element #dividendXExample span:first-child::after,
@@ -440,7 +440,7 @@ p:nth-of-type(3) span {
 .standardError > div:first-of-type {
   grid-row: 1/-1;
   align-self: center;
-  font-size: calc(25 / var(--base-font-size) * 1rem);
+  font-size: 21.875px;
   font-weight: 700;
 }
 .standardError__top-element {
@@ -471,7 +471,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: 0;
   right: -10px;
-  font-size: calc(15 / var(--base-font-size) * 1rem);
+  font-size: 13.125px;
 }
 .standardError .column2 .iX::after {
   content: "X";
@@ -503,7 +503,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: 0;
   right: -7px;
-  font-size: calc(12 / var(--base-font-size) * 1rem);
+  font-size: 10.5px;
 }
 .meanDifferenceError #meanDiffErSpan1::after {
   content: "1";
@@ -520,7 +520,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: -3px;
   right: 3px;
-  font-size: calc(12 / var(--base-font-size) * 1rem);
+  font-size: 10.5px;
 }
 .meanDifferenceError #meanDiffErSpan3::after {
   content: "1";
@@ -536,10 +536,10 @@ p:nth-of-type(3) span {
   padding: 10px 0 10px 5px;
 }
 .degreesOfFreedom__flex .f {
-  font-size: calc(30 / var(--base-font-size) * 1rem);
+  font-size: 26.25px;
 }
 .degreesOfFreedom__flex .n {
-  font-size: calc(20 / var(--base-font-size) * 1rem);
+  font-size: 17.5px;
 }
 .degreesOfFreedom__flex .n span {
   position: relative;
@@ -549,7 +549,7 @@ p:nth-of-type(3) span {
   position: absolute;
   bottom: -3px;
   right: -7px;
-  font-size: calc(12 / var(--base-font-size) * 1rem);
+  font-size: 10.5px;
 }
 .degreesOfFreedom__flex .n span:first-child::after {
   content: "1";
@@ -629,7 +629,7 @@ h1 {
   display: block;
   text-align: center;
   text-transform: uppercase;
-  font-size: calc(30 / var(--base-font-size) * 1rem);
+  font-size: 26.25px;
   font-weight: 700;
 }
 .form-inner form input[type=text] {
@@ -655,8 +655,8 @@ h1 {
 }
 .form-inner h2 {
   text-align: center;
-  font-size: calc(20.5 / var(--base-font-size) * 1rem);
-  letter-spacing: calc(2 / var(--base-font-size) * 1rem);
+  font-size: 18px;
+  letter-spacing: 1.75px;
   line-height: 1.5rem;
   font-weight: 700;
   text-transform: lowercase;
@@ -689,7 +689,7 @@ h1 {
   top: -50%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: calc(20 / var(--base-font-size) * 1rem);
+  font-size: 17.5px;
 }
 .form-inner__row-result .flex-result > div:first-child::before {
   content: "X";
@@ -710,8 +710,8 @@ h1 {
   background-color: #1e90ff;
   color: #fff;
   text-transform: uppercase;
-  font-size: calc(20 / var(--base-font-size) * 1rem);
-  letter-spacing: calc(2 / var(--base-font-size) * 1rem);
+  font-size: 17.5px;
+  letter-spacing: 1.75px;
   font-weight: 700;
   text-align: center;
   border-radius: 15px;
@@ -732,11 +732,18 @@ h1 {
   .form-inner button:last-child {
     position: absolute;
     bottom: 0;
-    left: 78.5%;
+    left: 72.5%;
   }
 }
 .form-inner button[data-btn] {
-  width: 100%;
+  display: inline-block;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding: 0;
+  width: 120px;
+}
+.form-inner #btn10 {
+  margin-left: 6px;
 }
 .form-inner .result {
   min-width: 110px;
