@@ -90,6 +90,14 @@ body {
   margin: 50px 0px 0px 0px;
 }
 
+.background {
+  border-radius: 15px;
+  padding: 10px;
+  background-color: rgba(0, 128, 128, 0.7);
+  margin-top: 15px;
+  box-shadow: 0 4px 8px 2px #000;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 70px repeat(2, max-content);
@@ -140,6 +148,8 @@ body {
 .degreesOfFreedom-container {
   overflow-x: auto;
   background-color: #fff;
+  padding-left: 5px;
+  border-radius: 15px;
 }
 
 .none {
@@ -203,18 +213,17 @@ h3 {
   }
 }
 
-.calc-container > p {
+.background > p {
   font-size: clamp(18 / var(--base-font-size) * 1rem, 17.2558139535 / var(--base-font-size) * 1rem + 0.2325581395vw, 20 / var(--base-font-size) * 1rem);
   text-align: center;
   font-weight: 700;
-  margin: 20px 0;
   line-height: normal;
   position: relative;
 }
-.calc-container > p:nth-of-type(n + 2):nth-of-type(-n + 6) {
+.background > p:nth-of-type(n + 2):nth-of-type(-n + 6) {
   margin: 30px 0 20px 0;
 }
-.calc-container > p:nth-of-type(n + 2):nth-of-type(-n + 6)::before {
+.background > p:nth-of-type(n + 2):nth-of-type(-n + 6)::before {
   content: "";
   position: absolute;
   top: -5px;

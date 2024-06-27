@@ -8,7 +8,7 @@
 			content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no"
 		/>
 		<link rel="stylesheet" href="css/style.css" />
-		<!-- <link rel="icon" href=""> -->
+		<link rel="icon" href="/img/icon.ico">
 		<title>t-Критерий Стьюдента</title>
 	</head>
 	<body>
@@ -93,266 +93,273 @@
 				<div>
 					<h3>Последовательность выполнения вычислений</h3>
 				</div>
-				<p>Ⅰ Вычисление средней арифметической величины <span>X</span></p>
-
-				<!-- ШАБЛОН -->
-				<div class="averageGrid grid">
-					<p class="firstP"><span>X</span> =</p>
-					<div class="top-element dividend">
-						<div><span>&sum;</span>Xi</div>
-					</div>
-					<div class="bottom-element divisor">n</div>
-					<div class="result-element calcResult"></div>
-				</div>
-				<!-- ШАБЛОН -->
-
-				<div class="averageGrid-container none" data-none>
-					<div class="averageGrid grid">
-						<p class="firstP"><span class="spanX">X</span> =</p>
-						<div class="top-element dividend">
-							<div data-dividendX>
-								<!-- <span>&sum;</span>Xi -->
-							</div>
-						</div>
-						<div class="bottom-element divisor" data-divisorX>
-							<!-- n -->
-						</div>
-						<div class="result-element calcResult" data-quotientX></div>
-					</div>
-					<div class="averageGrid grid">
-						<p class="firstP"><span class="spanY">X</span> =</p>
-						<div class="top-element dividend">
-							<div data-dividendY>
-								<!-- <span>&sum;</span>Yi -->
-							</div>
-						</div>
-						<div class="bottom-element divisor" data-divisorY>
-							<!-- n -->
-						</div>
-						<div class="result-element calcResult" data-quotientY></div>
-					</div>
-				</div>
-				<p>Ⅱ Вычисление среднего квадратического отклонения <span>&#963;</span></p>
-
-				<!-- ШАБЛОН -->
-				<div class="sigmaGrid grid">
-					<div>&#963; =</div>
-					<p class="firstP p"><span class="spanSigma">√&#963;</span> =</p>
-					<div class="sigmaGrid__top-element dividend after">
-						<div>
-							<span>&sum;</span>(Xi - <span id="averX">X</span>)
-						</div>
-					</div>
-					<div class="sigmaGrid__bottom-element divisor">n</div>
-					<div class="sigmaGrid__result-element calcResult"></div>
-				</div>
-				<!-- ШАБЛОН -->
-
-				<div class="sigmaGrid-container none" data-none>
-					<div class="sigmaGrid grid">
-						<div><span id="sigmaX">&#963;</span> =</div>
-						<p class="firstP p"><span class="spanSigma">√&#963;</span> =</p>
-						<div class="sigmaGrid__top-element dividend after">
-							<div data-dividendX-second>
-								<!-- <span>&sum;</span>(Xi - <span id="averageX">X</span>) -->
-							</div>
-						</div>
-						<div class="sigmaGrid__bottom-element divisor" data-divisorX-second>
-							<!-- n -->
-						</div>
-						<div class="sigmaGrid__result-element calcResult" data-quotientX-second></div>
-					</div>
-					<div class="sigmaGrid grid">
-						<div> <span id="sigmaY">&#963;</span> =</div>
-						<p class="firstP p"><span class="spanSigma">√&#963;</span> =</p>
-						<div class="sigmaGrid__top-element dividend after">
-							<div data-dividendY-second>
-								<!-- <span>&sum;</span>(Xi - <span id="averageY">X</span>) -->
-							</div>
-						</div>
-						<div class="sigmaGrid__bottom-element divisor" data-divisorY-second>
-							<!-- n -->
-						</div>
-						<div class="sigmaGrid__result-element calcResult" data-quotientY-second></div>
-					</div>
-				</div>
-				<p>Ⅲ Вычисление стандартного отклонения <span>&#963;</span></p>
-
-				<!-- ШАБЛОН -->
-				<div class="standardDeviation grid">
-					<p class="firstP">&#963; =</p>
-					<div class="standardDeviation__top-element dividend">
-						<div id="dividendXExample">
-							<span>X</span> - <span>X</span>
-						</div>
-					</div>
-					<div class="standardDeviation__bottom-element divisor">K</div>
-					<div class="standardDeviation__result-element calcResult"></div>
-				</div>
-				<!-- ШАБЛОН -->
 				
-				<div class="standardDeviation-container none" data-none>
-					<div class="standardDeviation grid">
-						<p class="firstP"><span class="x">&#963;</span> =</p>
-						<div class="standardDeviation__top-element dividend">
-							<div id="dividendX">
-								<!-- <span>X</span> - <span>X</span> -->
-							</div>
-						</div>
-						<div class="standardDeviation__bottom-element divisor" id="divisorX">
-							<!-- K -->
-						</div>
-						<div class="standardDeviation__result-element calcResult" id="calcResultX"></div>
-					</div>
-					<div class="standardDeviation grid">
-						<p class="firstP"><span class="y">&#963;</span> =</p>
-						<div class="standardDeviation__top-element dividend">
-							<div id="dividendY">
-								<!-- <span>X</span> - <span>X</span> -->
-							</div>
-						</div>
-						<div class="standardDeviation__bottom-element divisor" id="divisorY">
-							<!-- K -->
-						</div>
-						<div class="standardDeviation__result-element calcResult" id="calcResultY"></div>
-					</div>
-				</div>
-				<div class="img-container">
-					<img src="img/1.png" alt="">
-				</div>
-				<p>Ⅳ Вычисление стандартной ошибки среднего арифметического значения (m)</p>
-
 				<!-- ШАБЛОН -->
-				<div class="flex-row">
-					<div class="standardError grid">
-						<div>(при n < 30)</div>
-						<p class="firstP column2"><i>m</i> =</p>
-						<div class="standardError__top-element dividend">
+				<div class="background">
+					<p>Ⅰ Вычисление средней арифметической величины <span>X</span></p>
+					<div class="averageGrid grid">
+						<p class="firstP"><span>X</span> =</p>
+						<div class="top-element dividend">
+							<div><span>&sum;</span>Xi</div>
+						</div>
+						<div class="bottom-element divisor">n</div>
+						<div class="result-element calcResult"></div>
+					</div>
+					<!-- ШАБЛОН -->
+					<div class="averageGrid-container none" data-none>
+						<div class="averageGrid grid">
+							<p class="firstP"><span class="spanX">X</span> =</p>
+							<div class="top-element dividend">
+								<div data-dividendX>
+									<!-- <span>&sum;</span>Xi -->
+								</div>
+							</div>
+							<div class="bottom-element divisor" data-divisorX>
+								<!-- n -->
+							</div>
+							<div class="result-element calcResult" data-quotientX></div>
+						</div>
+						<div class="averageGrid grid">
+							<p class="firstP"><span class="spanY">X</span> =</p>
+							<div class="top-element dividend">
+								<div data-dividendY>
+									<!-- <span>&sum;</span>Yi -->
+								</div>
+							</div>
+							<div class="bottom-element divisor" data-divisorY>
+								<!-- n -->
+							</div>
+							<div class="result-element calcResult" data-quotientY></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="background">
+					<p>Ⅱ Вычисление среднего квадратического отклонения <span>&#963;</span></p>
+					<!-- ШАБЛОН -->
+					<div class="sigmaGrid grid">
+						<div>&#963; =</div>
+						<p class="firstP p"><span class="spanSigma">√&#963;</span> =</p>
+						<div class="sigmaGrid__top-element dividend after">
 							<div>
-								&#963;
+								<span>&sum;</span>(Xi - <span id="averX">X</span>)
 							</div>
 						</div>
-						<div class="standardError__bottom-element divisor">√(n - 1)</div>
-						<div class="standardError__result-element calcResult"></div>
+						<div class="sigmaGrid__bottom-element divisor">n</div>
+						<div class="sigmaGrid__result-element calcResult"></div>
 					</div>
-					<div class="standardError grid">
-						<div>(при n ≥ 30)</div>
-						<p class="firstP column2"><i>m</i> =</p>
-						<div class="standardError__top-element dividend">
-							<div>
-								&#963;
+					<!-- ШАБЛОН -->
+					<div class="sigmaGrid-container none" data-none>
+						<div class="sigmaGrid grid">
+							<div><span id="sigmaX">&#963;</span> =</div>
+							<p class="firstP p"><span class="spanSigma">√&#963;</span> =</p>
+							<div class="sigmaGrid__top-element dividend after">
+								<div data-dividendX-second>
+									<!-- <span>&sum;</span>(Xi - <span id="averageX">X</span>) -->
+								</div>
 							</div>
+							<div class="sigmaGrid__bottom-element divisor" data-divisorX-second>
+								<!-- n -->
+							</div>
+							<div class="sigmaGrid__result-element calcResult" data-quotientX-second></div>
 						</div>
-						<div class="standardError__bottom-element divisor">√n</div>
-						<div class="standardError__result-element calcResult"></div>
+						<div class="sigmaGrid grid">
+							<div> <span id="sigmaY">&#963;</span> =</div>
+							<p class="firstP p"><span class="spanSigma">√&#963;</span> =</p>
+							<div class="sigmaGrid__top-element dividend after">
+								<div data-dividendY-second>
+									<!-- <span>&sum;</span>(Xi - <span id="averageY">X</span>) -->
+								</div>
+							</div>
+							<div class="sigmaGrid__bottom-element divisor" data-divisorY-second>
+								<!-- n -->
+							</div>
+							<div class="sigmaGrid__result-element calcResult" data-quotientY-second></div>
+						</div>
 					</div>
 				</div>
-				<!-- ШАБЛОН -->
 
-				<div class="standardError-container">
-					<div class="standardError grid none" data-lessX>
-						<div>(при n < 30)</div>
-						<p class="firstP column2"><i class="iX">m</i> =</p>
-						<div class="standardError__top-element dividend">
-							<div id="topLessX">
-								<!-- &#963; -->
+				<div class="background">
+					<p>Ⅲ Вычисление стандартного отклонения <span>&#963;</span></p>
+					<!-- ШАБЛОН -->
+					<div class="standardDeviation grid">
+						<p class="firstP">&#963; =</p>
+						<div class="standardDeviation__top-element dividend">
+							<div id="dividendXExample">
+								<span>X</span> - <span>X</span>
 							</div>
 						</div>
-						<div class="standardError__bottom-element divisor" id="bottomLessX">
-							<!-- √n - 1 -->
-						</div>
-						<div class="standardError__result-element calcResult" id="calcResultLessX"></div>
+						<div class="standardDeviation__bottom-element divisor">K</div>
+						<div class="standardDeviation__result-element calcResult"></div>
 					</div>
-					<div class="standardError grid none" data-moreX>
-						<div>(при n ≥ 30)</div>
-						<p class="firstP column2"><i class="iX">m</i> =</p>
-						<div class="standardError__top-element dividend">
-							<div id="topMoreX">
-								<!-- &#963; -->
+					<!-- ШАБЛОН -->
+					
+					<div class="standardDeviation-container none" data-none>
+						<div class="standardDeviation grid">
+							<p class="firstP"><span class="x">&#963;</span> =</p>
+							<div class="standardDeviation__top-element dividend">
+								<div id="dividendX">
+									<!-- <span>X</span> - <span>X</span> -->
+								</div>
 							</div>
+							<div class="standardDeviation__bottom-element divisor" id="divisorX">
+								<!-- K -->
+							</div>
+							<div class="standardDeviation__result-element calcResult" id="calcResultX"></div>
 						</div>
-						<div class="standardError__bottom-element divisor" id="bottomMoreX">
-							<!-- √n -->
+						<div class="standardDeviation grid">
+							<p class="firstP"><span class="y">&#963;</span> =</p>
+							<div class="standardDeviation__top-element dividend">
+								<div id="dividendY">
+									<!-- <span>X</span> - <span>X</span> -->
+								</div>
+							</div>
+							<div class="standardDeviation__bottom-element divisor" id="divisorY">
+								<!-- K -->
+							</div>
+							<div class="standardDeviation__result-element calcResult" id="calcResultY"></div>
 						</div>
-						<div class="standardError__result-element calcResult" id="calcResultMoreX"></div>
 					</div>
-					<div class="standardError grid none" data-lessY>
-						<div>(при n < 30)</div>
-						<p class="firstP column2"><i class="iY">m</i> =</p>
-						<div class="standardError__top-element dividend">
-							<div id="topLessY">
-								<!-- &#963; -->
-							</div>
-						</div>
-						<div class="standardError__bottom-element divisor" id="bottomLessY">
-							<!-- √n - 1 -->
-						</div>
-						<div class="standardError__result-element calcResult" id="calcResultLessY"></div>
-					</div>
-					<div class="standardError grid none" data-moreY>
-						<div>(при n ≥ 30)</div>
-						<p class="firstP column2"><i class="iY">m</i> =</p>
-						<div class="standardError__top-element dividend">
-							<div id="topMoreY">
-								<!-- &#963; -->
-							</div>
-						</div>
-						<div class="standardError__bottom-element divisor" id="bottomMoreY">
-							<!-- √n -->
-						</div>
-						<div class="standardError__result-element calcResult" id="calcResultMoreY"></div>
+					<div class="img-container">
+						<img src="img/1.png" alt="">
 					</div>
 				</div>
-				<p>Ⅴ Вычисление средней ошибки разности (t)</p>
 
-				<!-- ШАБЛОН -->
-				<div class="meanDifferenceError grid">
-					<p class="firstP"><i>t</i> =</p>
-					<div class="meanDifferenceError__top-element dividend">
-						<div>
-							<span id="meanDiffErSpan1">X</span> - <span id="meanDiffErSpan2">X</span>
+				<div class="background">
+					<p>Ⅳ Вычисление стандартной ошибки среднего арифметического значения (m)</p>
+					<!-- ШАБЛОН -->
+					<div class="flex-row">
+						<div class="standardError grid">
+							<div>(при n < 30)</div>
+							<p class="firstP column2"><i>m</i> =</p>
+							<div class="standardError__top-element dividend">
+								<div>
+									&#963;
+								</div>
+							</div>
+							<div class="standardError__bottom-element divisor">√(n - 1)</div>
+							<div class="standardError__result-element calcResult"></div>
+						</div>
+						<div class="standardError grid">
+							<div>(при n ≥ 30)</div>
+							<p class="firstP column2"><i>m</i> =</p>
+							<div class="standardError__top-element dividend">
+								<div>
+									&#963;
+								</div>
+							</div>
+							<div class="standardError__bottom-element divisor">√n</div>
+							<div class="standardError__result-element calcResult"></div>
 						</div>
 					</div>
-					<div class="meanDifferenceError__bottom-element divisor">√<span id="meanDiffErSpan3"><i>(m &#178;</i></span> - <span id="meanDiffErSpan4"><i>m &#178;</i></span> )</div>
-					<div class="meanDifferenceError__result-element calcResult"></div>
+					<!-- ШАБЛОН -->
+					<div class="standardError-container">
+						<div class="standardError grid none" data-lessX>
+							<div>(при n < 30)</div>
+							<p class="firstP column2"><i class="iX">m</i> =</p>
+							<div class="standardError__top-element dividend">
+								<div id="topLessX">
+									<!-- &#963; -->
+								</div>
+							</div>
+							<div class="standardError__bottom-element divisor" id="bottomLessX">
+								<!-- √n - 1 -->
+							</div>
+							<div class="standardError__result-element calcResult" id="calcResultLessX"></div>
+						</div>
+						<div class="standardError grid none" data-moreX>
+							<div>(при n ≥ 30)</div>
+							<p class="firstP column2"><i class="iX">m</i> =</p>
+							<div class="standardError__top-element dividend">
+								<div id="topMoreX">
+									<!-- &#963; -->
+								</div>
+							</div>
+							<div class="standardError__bottom-element divisor" id="bottomMoreX">
+								<!-- √n -->
+							</div>
+							<div class="standardError__result-element calcResult" id="calcResultMoreX"></div>
+						</div>
+						<div class="standardError grid none" data-lessY>
+							<div>(при n < 30)</div>
+							<p class="firstP column2"><i class="iY">m</i> =</p>
+							<div class="standardError__top-element dividend">
+								<div id="topLessY">
+									<!-- &#963; -->
+								</div>
+							</div>
+							<div class="standardError__bottom-element divisor" id="bottomLessY">
+								<!-- √n - 1 -->
+							</div>
+							<div class="standardError__result-element calcResult" id="calcResultLessY"></div>
+						</div>
+						<div class="standardError grid none" data-moreY>
+							<div>(при n ≥ 30)</div>
+							<p class="firstP column2"><i class="iY">m</i> =</p>
+							<div class="standardError__top-element dividend">
+								<div id="topMoreY">
+									<!-- &#963; -->
+								</div>
+							</div>
+							<div class="standardError__bottom-element divisor" id="bottomMoreY">
+								<!-- √n -->
+							</div>
+							<div class="standardError__result-element calcResult" id="calcResultMoreY"></div>
+						</div>
+					</div>
 				</div>
-				<!-- ШАБЛОН -->
 
-				<div class="meanDifferenceError-container none" data-none>
+				<div class="background">
+					<p>Ⅴ Вычисление средней ошибки разности (t)</p>
+					<!-- ШАБЛОН -->
 					<div class="meanDifferenceError grid">
-					<p class="firstP"><i>t</i> =</p>
-					<div class="meanDifferenceError__top-element dividend">
-						<div data-meanDiffTop>
-							<!-- <span id="meanDiffErSpan1">X</span> - <span id="meanDiffErSpan2">X</span> -->
+						<p class="firstP"><i>t</i> =</p>
+						<div class="meanDifferenceError__top-element dividend">
+							<div>
+								<span id="meanDiffErSpan1">X</span> - <span id="meanDiffErSpan2">X</span>
+							</div>
+						</div>
+						<div class="meanDifferenceError__bottom-element divisor">√<span id="meanDiffErSpan3"><i>(m &#178;</i></span> - <span id="meanDiffErSpan4"><i>m &#178;</i></span> )</div>
+						<div class="meanDifferenceError__result-element calcResult"></div>
+					</div>
+					<!-- ШАБЛОН -->
+					<div class="meanDifferenceError-container none" data-none>
+						<div class="meanDifferenceError grid">
+						<p class="firstP"><i>t</i> =</p>
+						<div class="meanDifferenceError__top-element dividend">
+							<div data-meanDiffTop>
+								<!-- <span id="meanDiffErSpan1">X</span> - <span id="meanDiffErSpan2">X</span> -->
+							</div>
+						</div>
+						<div class="meanDifferenceError__bottom-element divisor" data-meanDiffBottom>
+							<!-- √<span id="meanDiffErSpan3"><i>m &#178;</i></span> - <span id="meanDiffErSpan4"><i>m &#178;</i></span> -->
+						</div>
+						<div class="meanDifferenceError__result-element calcResult" data-meanDiffResult></div>
+					</div>
+					</div>
+				</div>
+
+				<div class="background">
+					<p>Ⅵ Вычисление числа степеней свободы ( <i>f</i> )</p>
+					<!-- ШАБЛОН -->
+					<div class="degreesOfFreedom">
+						<div class="degreesOfFreedom__flex">
+							<div class="f"><i>f</i> =</div>
+							<div class="n"><span>n</span> + <span>n</span> - 2</div>
 						</div>
 					</div>
-					<div class="meanDifferenceError__bottom-element divisor" data-meanDiffBottom>
-						<!-- √<span id="meanDiffErSpan3"><i>m &#178;</i></span> - <span id="meanDiffErSpan4"><i>m &#178;</i></span> -->
-					</div>
-					<div class="meanDifferenceError__result-element calcResult" data-meanDiffResult></div>
-				</div>
-				</div>
-				<p>Ⅵ Вычисление числа степеней свободы ( <i>f</i> )</p>
-
-				<!-- ШАБЛОН -->
-				<div class="degreesOfFreedom">
-					<div class="degreesOfFreedom__flex">
-						<div class="f"><i>f</i> =</div>
-						<div class="n"><span>n</span> + <span>n</span> - 2</div>
-					</div>
-				</div>
-				<!-- ШАБЛОН -->
-
-				<div class="degreesOfFreedom-container none" data-none>
-					<div class="degreesOfFreedom__flex">
-						<div class="f"><i>f</i> =</div>
-						<div class="n fn">
-							<!-- <span>n</span> + <span>n</span> - 2 -->
+					<!-- ШАБЛОН -->
+					<div class="degreesOfFreedom-container none" data-none>
+						<div class="degreesOfFreedom__flex">
+							<div class="f"><i>f</i> =</div>
+							<div class="n fn">
+								<!-- <span>n</span> + <span>n</span> - 2 -->
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="imgP">
-					<img src="img/p.png" alt="">
+					<div class="imgP">
+						<img src="img/p.png" alt="">
+					</div>
 				</div>
 			</div>
 			<!--  -->

@@ -3,6 +3,13 @@
 .calc-container {
 	margin: 50px 0px 0px 0px;
 }
+.background {
+	border-radius: 15px;
+	padding: 10px;
+	background-color: rgba(0, 128, 128, 0.7);
+	margin-top: 15px;
+	box-shadow: 0 4px 8px 2px #000;
+}
 .grid {
 	display: grid;
 	grid-template-columns: 70px repeat(2, -webkit-max-content);
@@ -50,6 +57,8 @@
 .degreesOfFreedom-container {
 	overflow-x: auto;
 	background-color: #fff;
+	padding-left: 5px;
+	border-radius: 15px;
 }
 .none {
 	display: none;
@@ -112,11 +121,10 @@ h3 {
 		}
 	}
 }
-.calc-container > p {
+.background > p {
 	font-size: clampFontSize(320, 1180, 18, 20);
 	text-align: center;
 	font-weight: 700;
-	margin: 20px 0;
 	line-height: normal;
 	position: relative;
 	&:nth-of-type(n + 2):nth-of-type(-n + 6) {
