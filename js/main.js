@@ -197,7 +197,7 @@
 			getValueFromTableX = table[firstDigit][secondDigit]
 		} else if (quantityX > 99 && quantityX <= 119) {
 			firstDigit = parseInt(quantityX.toString().substring(0, 2), 10)
-			secondDigit = parseInt(quantityX.toString()[1], 10)
+			secondDigit = parseInt(quantityX.toString()[2], 10)
 			getValueFromTableX = table[firstDigit][secondDigit]
 		} else {
 			getValueFromTableX = '';
