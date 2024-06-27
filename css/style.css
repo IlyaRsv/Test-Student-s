@@ -217,6 +217,30 @@ h3 {
   }
 }
 
+#desc {
+  max-width: 750px;
+  margin: 15px auto;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(78, 78, 78);
+  font-size: clamp(16 / var(--base-font-size) * 1rem, 15.0909090909 / var(--base-font-size) * 1rem + 0.2840909091vw, 18 / var(--base-font-size) * 1rem);
+  position: relative;
+  padding: 0 10px;
+}
+#desc::before, #desc::after {
+  content: "!";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 45px;
+}
+#desc::before {
+  left: -1.5%;
+}
+#desc::after {
+  right: -1.5%;
+}
+
 .background > p {
   font-size: clamp(18 / var(--base-font-size) * 1rem, 17.2558139535 / var(--base-font-size) * 1rem + 0.2325581395vw, 20 / var(--base-font-size) * 1rem);
   text-align: center;

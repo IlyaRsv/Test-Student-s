@@ -124,6 +124,29 @@ h3 {
 		}
 	}
 }
+#desc {
+	max-width: 750px;
+	margin: 15px auto;
+	text-align: center;
+	font-size: 18px;
+	color: rgb(78, 78, 78);
+	font-size: clampFontSize(320, 1024, 16, 18);
+	position: relative;
+	padding: 0 10px;
+	&::before, &::after{
+		content: '!';
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 45px;
+	}
+	&::before {
+		left: -1.5%;
+	}
+	&::after {
+		right: -1.5%;
+	}
+}
 .background > p {
 	font-size: clampFontSize(320, 1180, 18, 20);
 	text-align: center;
